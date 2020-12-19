@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=visualizeInit"
       defer
     ></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -42,10 +42,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="government.html">Government</a>
+                <a class="nav-link active" href="visualize.html">Visualize</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -177,25 +177,7 @@
 
 
 <!-- IGNORE THIS DIVVVVVVVV ___________________________________________________ -->
-    <div hidden>
-        <div class="row justify-content-center mb-5 element-animate">
-          <div class="col-md-8 text-center">
-            <form action="#">
-          <div class="form-group">
-                  <textarea name="" id="forcedLatitude" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                </div>
-          <div class="form-group">
-                  <textarea name="" id="forcedLongitude" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                </div>
-           </div>
-        </form>
-          </div>
-          <div class="row justify-content-center mb-5 element-animate">
-            <div class="col-md-8 text-center">
-              <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
-            </div>
-          </div>
-        </div>
+    
 
         <div class="container-fluid">
           <div class="row justify-content-center mb-5 element-animate">

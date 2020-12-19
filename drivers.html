@@ -17,10 +17,11 @@
     <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
 
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=visualizeInit"
       defer
     ></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/google-map.js"></script>
 
   </head>
   <body>
@@ -39,10 +40,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="government.html">Government</a>
+                <a class="nav-link" href="visualize.html">Visualize</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -93,17 +94,101 @@
             <p>Please provide the address and a short description of your proposal. Test your proposal if you would like!</p>
           </div>
         </div>
-
         </div>
 
-        <div class="container-fluid">
-          <div class="row justify-content-center mb-5 element-animate">
-            <div class="col-md-8 text-center">
-              <div id="map"></div>
+          <div class="container">
+            <div class="row justify-content-center mb-5 element-animate">
+              <div class="col-md-8 text-center">
+            <div class="tab">
+              <button class="tablinks" onclick="openCity(event, 'StopSign')">Stop Sign</button>
+              <button class="tablinks" onclick="openCity(event, 'SpeedLimit')">Speed Limit</button>
+              <button class="tablinks" onclick="openCity(event, 'StopLight')">Stop Light</button>
+              <button class="tablinks" onclick="openCity(event, 'Lanes')">Lanes</button>
             </div>
-          </div>
-        </div>
 
+            <div id="StopSign" class="tabcontent">
+              <h3>Stop Sign</h3>
+              <form action="#">
+            <div class="form-group">
+                    <textarea name="" id="stopLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                  </div>
+            <div class="form-group">
+                    <textarea name="" id="stopLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                  </div>
+                </form>
+                <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+             </div>
+
+             <div id="SpeedLimit" class="tabcontent">
+               <h3>Speed Limit</h3>
+               <form action="#">
+             <div class="form-group">
+                     <textarea name="" id="speedLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                   </div>
+             <div class="form-group">
+                     <textarea name="" id="speedLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                   </div>
+                   <div class="form-group">
+                           <textarea name="" id="speedSpeed" cols="30" rows="1" class="form-control" placeholder="Speed limit of sign"></textarea>
+                         </div>
+                 </form>
+                 <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+              </div>
+
+              <div id="StopLight" class="tabcontent">
+                <h3>Stop Light</h3>
+                <form action="#">
+              <div class="form-group">
+                      <textarea name="" id="lightLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                    </div>
+              <div class="form-group">
+                      <textarea name="" id="lightLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                    </div>
+                  </form>
+                  <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+               </div>
+
+               <div id="Lanes" class="tabcontent">
+                 <h3>Lanes</h3>
+                 <form action="#">
+                   <label>Starting point</label>
+               <div class="form-group">
+                       <textarea name="" id="laneStartLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                     </div>
+               <div class="form-group">
+                       <textarea name="" id="latStartLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                     </div>
+
+                     <label>Ending point</label>
+                     <div class="form-group">
+                             <textarea name="" id="laneEndLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                           </div>
+                     <div class="form-group">
+                             <textarea name="" id="laneEndLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                           </div>
+                   </form>
+                   <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+                </div>
+
+            </div>
+            </div>
+            </div>
+
+
+        <!-- IGNORE THIS DIVVVVVVVV ___________________________________________________ -->
+
+
+            <div class="container-fluid">
+              <div class="row justify-content-center mb-5 element-animate">
+                <div class="col-md-8 text-center">
+                  <div id="map"></div>
+                </div>
+              </div>
+            </div>
+
+        </section>
+
+        <div class="container">
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
             <form action="#">
@@ -113,22 +198,16 @@
               <div class="form-group">
                       <textarea name="" id="forcedLongitude" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
                     </div>
-              <div class="form-group">
-                      <textarea name="" id="forcedWeather" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
-                    </div>
 
-              <div class="form-group">
-                           <textarea name="" id="forcedSpeed" cols="30" rows="1" class="form-control" placeholder="Additional Location Description?"></textarea>
-                  </div>
-              <div class="form-group">
-                          <textarea name="" id="roadSignsS" cols="30" rows="1" class="form-control" placeholder="Accident Occurance?"></textarea>
-                  </div>
-                  <div class="form-group">
-                          <textarea name="" id="roadShapes" cols="30" rows="1" class="form-control" placeholder="Description of Proposal"></textarea>
-                        </div>
             </form>
             </div>
+
+            <div class="col-md-8 text-center">
+            <button class="btn btn-primary py-3 px-5" type="button" onClick="driverPage()">Submit</button>
           </div>
+
+          </div>
+        </div>
 
     </section>
 
@@ -184,7 +263,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/google-map.js"></script>
     <script>
     function submitCrashData() {
 

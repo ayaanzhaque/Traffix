@@ -1,5 +1,5 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/11de21f1-7d25-42e6-808a-ed997ffd8ca9/deploy-status)](https://app.netlify.com/sites/traffixaispace/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/653d4a37-5fb9-4b5a-8fd3-2732782dfdda/deploy-status)](https://app.netlify.com/sites/traffixai/deploys)
 
-# [Traffix](https://traffixai.space/)
+# [Traffix](https://traffixai.tech/)
 Using AI to promote smarter road design
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Traffix &mdash; Free Website Template by Cololrib</title>
+    <title>Traffix - Government</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="css/style.css">
 
 
+  </head>
+  <body>
+
     <header role="banner">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -33,16 +36,16 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="government.html">Government</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="visualize.html">Visualize</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contracting.html">Contractors</a>
+                <a class="nav-link active" href="government.html">Government</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="drivers.html">Drivers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contracting.html">Contractors</a>
               </li>
             </ul>
 
@@ -55,15 +58,14 @@
     </header>
     <!-- END header -->
 
-    <section class="home-slider inner-page owl-carousel">
-      <div class="slider-item" style="background-image: url('images/slider-1.jpg');">
+    <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image: url('images/governmentPage.png');">
 
         <div class="container">
           <div class="row slider-text align-items-center justify-content-center">
             <div class="col-md-8 text-center col-sm-12 element-animate">
               <h1>Government</h1>
               <p class="mb-5 sub-text">Please upload your collected data below. We will shortly provide a map analysis of your inputted information.</p>
-              <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3">Explore</a></p>
             </div>
           </div>
         </div>
@@ -71,56 +73,168 @@
       </div>
     </section>
     <!-- END slider -->
-    <section class="ftco-section testimony-section ftco-degree-bg">
 
-          <style>
-          input[type="file"] {
-            display: none;
-          }
-          </style>
+    <section class="section">
+      <div class="container">
 
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <h2 class=" heading mb-4">Upload Traffic Data</h2>
+            <p>Please upload your traffic data on specific roads and intersections you would like to test with. Please upload as a CSV.</p>
+            <label for="file-upload" class="btn btn-primary px-4 py-3">Upload File</label>
+            <input id="file-upload" type="file"/>
+          </div>
+        </div>
 
-    <center>
-              <div class="col-md-7 text-center heading-section ftco-animate">
-                <br>
-                <h2>Upload Crash Data</h2>
-                <br>
-                <p> If you have crash data, please upload it as a CSV file below.</p>
-                <br>
-                <label for="file-upload" class="btn btn-primary px-4 py-3">Upload File</label>
-    				    <input id="file-upload" type="file"/>
-              </div>
-    <br>
-
-        <form action="#">
-            <div class="col-md-6 pr-md-5">
-          <div class="form-group">
-                  <textarea name="" id="namename" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
-                </div>
-          <div class="form-group">
-                  <textarea name="" id="emailemail" cols="30" rows="1" class="form-control" placeholder="Email"></textarea>
-                </div>
-          <div class="form-group">
-                  <textarea name="" id="citycity" cols="30" rows="1" class="form-control" placeholder="City, State (e.g. Houston, TX)"></textarea>
-                </div>
-                </div>
-    <br><br>
-
-        </form>
-        <button class="btn btn-primary py-3 px-5" type="button" onClick="submitCrashData()">Submit</button>
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <form action="#">
+                <div class="col-md-12 pr-md-5">
+              <div class="form-group">
+                      <textarea name="" id="namename" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
+                    </div>
+              <div class="form-group">
+                      <textarea name="" id="emailemail" cols="30" rows="1" class="form-control" placeholder="Email"></textarea>
+                    </div>
+              <div class="form-group">
+                      <textarea name="" id="citycity" cols="30" rows="1" class="form-control" placeholder="City (eg. San Jose, CA)"></textarea>
+                    </div>
+              <div class="form-group">
+                      <textarea name="" id="addressaddress" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+                    </div>
+                    </div>
+            </form>
 
 
+
+          </div>
+
+          <script>
+                       function testSubmitFunction() {
+                         document.getElementById("hometown").style.display = "block";
+                       }
+                     </script>
+
+
+                   </div>
+                 </form>
+
+       <p></p>
+
+                 <div id="hometown" style="display: none">
+                     <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
+                 </div>
+               </center>
+                         </div>
+
+       <script>
+         function testSubmitFunctionTwo() {
+           document.getElementById("hometownTwo").style.display = "block";
+         }
+       </script>
+                   </div>
+                 </form>
+         <p class="null"></p>
+       <div id="hometownTwo" style="display: none">
+           <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
+       </div>
+                 </center>
+               </div>
+
+         <script>
+         function openCity(evt, cityName) {
+           var i, tabcontent, tablinks;
+           tabcontent = document.getElementsByClassName("tabcontent");
+           for (i = 0; i < tabcontent.length; i++) {
+             tabcontent[i].style.display = "none";
+           }
+           tablinks = document.getElementsByClassName("tablinks");
+           for (i = 0; i < tablinks.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" active", "");
+           }
+           document.getElementById(cityName).style.display = "block";
+           evt.currentTarget.className += " active";
+         }
+
+         document.getElementById("defaultOpen").click();
+         </script>
+
+        </div>
+
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <button class="btn btn-primary py-3 px-5" type="button" onClick="submitCrashData()">Submit</button>
+          </div>
+        </div>
+
+        </div>
+    </section>
+
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-4 mb-5">
+            <h3>Traffix</h3>
+            <p class="mb-5">Using AI to promote smarter road infrastructure design.</p>
+
+          </div>
+          <div class="col-md-5 mb-5 pl-md-5">
+            <h3>Contact Info</h3>
+            <ul class="list-unstyled footer-link">
+              <li class="d-block">
+                <span class="d-block">Ayaan Haque:</span>
+                <span class="text-white">ayaanzhaque@gmail.com</span></li>
+                <span class="d-block">Viraaj Reddi:</span>
+                <span class="text-white">viraajreddi@gmail.com</span></li>
+                <span class="d-block">Adithya Peruvemba:</span>
+                <span class="text-white">adtithya.peruvemba@gmail.com</span></li>
+                <span class="d-block">Ishaan Bhandari:</span>
+                <span class="text-white">ishaanbhandari0@gmail.com</span></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5">
+            <h3>Quick Links</h3>
+            <ul class="list-unstyled footer-link">
+              <li><a href="index.html">Index</a></li>
+              <li><a href="government.html">Government</a></li>
+              <li><a href="visualize.html">Visualize</a></li>
+              <li><a href="drivers.html">Drivers</a></li>
+              <li><a href="contracting.html">Contractors</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END footer -->
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
     function submitCrashData() {
 
       var givenName = document.getElementById("namename").value;
       var givenEmail = document.getElementById("emailemail").value;
       var givenCity = document.getElementById("citycity").value;
+      var givenAddress = document.getElementById("addressaddress").value;
 
       if (givenName == "") {
         document.getElementById("realCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
         document.getElementById("realCrashData").style["border"] = "1px solid red";
       } else if (givenEmail == "") {
+        document.getElementById("realCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
+        document.getElementById("realCrashData").style["border"] = "1px solid red";
+      } else if (givenCity == "") {
         document.getElementById("realCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
         document.getElementById("realCrashData").style["border"] = "1px solid red";
       } else if (givenCity == "") {
@@ -139,139 +253,20 @@
     </script>
 
     <style>
-    .crashDataStyle {
+.crashDataStyle {
 
-    text-align: center;
-    color: #000000;
-    border: 1px solid green;
-    display: block;
-    }
+text-align: center;
+color: #000000;
+border: 1px solid green;
+display: block;
+}
 
-    </style>
-<br>
+</style>
 
-    <!-- <section>
-      <div class="half d-lg-flex d-block">
-        <div class="image" style="background-image: url('images/slider-1.jpg')"></div>
-        <div class="text text-center element-animate">
-          <h3 class="mb-4">Our Mission</h3>
-          <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis tempora inventore, aliquam ratione. Eum vero sapiente tempora eveniet perspiciatis libero, omnis quae facilis! Voluptatibus minima autem, esse eius natus labore.</p>
-          <p><a href="#" class="btn btn-primary btn-sm px-3 py-2">Learn More</a></p>
-        </div>
-      </div>
-      <div class="half d-lg-flex d-block">
-        <div class="image order-2" style="background-image: url('images/slider-2.jpg')"></div>
-        <div class="text text-center element-animate">
-          <h3 class="mb-4">Company History</h3>
-          <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis tempora inventore, aliquam ratione. Eum vero sapiente tempora eveniet perspiciatis libero, omnis quae facilis! Voluptatibus minima autem, esse eius natus labore.</p>
-          <p><a href="#" class="btn btn-primary btn-sm px-3 py-2">Learn More</a></p>
-        </div>
-      </div>
-    </section>
-    <section class="section element-animate">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="media block-6 d-block text-center">
-              <div class="icon mb-3"><span class="ion-ios-bell-outline"></span></div>
-              <div class="media-body">
-                <h3 class="heading">Modern Design</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+<div id="realCrashData" class="crashDataStyle" style="display: none">
+
+<p id="crashDataReal" class="crashDataStyle">Your information has been successfully submitted.</p>
               </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 ">
-            <div class="media block-6 d-block text-center">
-              <div class="icon mb-3"><span class="ion-ios-heart-outline"></span></div>
-              <div class="media-body">
-                <h3 class="heading">Build With Love</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="media block-6 d-block text-center">
-              <div class="icon mb-3"><span class="ion-ios-bolt-outline"></span></div>
-              <div class="media-body">
-                <h3 class="heading">Fast Loading</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
-
-
-
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
-
-
-
-    <footer class="site-footer" role="contentinfo">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-4 mb-5">
-            <h3>About The Hexa Template</h3>
-            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.</p>
-            <ul class="list-unstyled footer-link d-flex footer-social">
-              <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
-              <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
-              <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
-              <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
-            </ul>
-
-          </div>
-          <div class="col-md-5 mb-5 pl-md-5">
-            <h3>Contact Info</h3>
-            <ul class="list-unstyled footer-link">
-              <li class="d-block">
-                <span class="d-block">Address:</span>
-                <span class="text-white">34 Street Name, City Name Here, United States</span></li>
-              <li class="d-block"><span class="d-block">Telephone:</span><span class="text-white">+1 242 4942 290</span></li>
-              <li class="d-block"><span class="d-block">Email:</span><span class="text-white">info@yourdomain.com</span></li>
-            </ul>
-          </div>
-          <div class="col-md-3 mb-5">
-            <h3>Quick Links</h3>
-            <ul class="list-unstyled footer-link">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Disclaimers</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-md-center text-left">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                  aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- END footer -->
-
-    <!-- loader -->
-    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
-
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/main.js"></script>
   </body>
 </html>
