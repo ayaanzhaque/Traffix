@@ -3,7 +3,7 @@ var presetLatArray = [
   33.763901,
   33.763963,
   33.767460,
-
+  33.767527,
   33.767798,
   33.768723,
   33.768654,
@@ -18,7 +18,7 @@ var presetLongArray = [
   -84.367821,
   -84.371933,
   -84.378112,
-
+  -84.382028,
   -84.371164,
   -84.381070,
   -84.381943,
@@ -32,11 +32,15 @@ var stop = './images/mapIcons/redOctagon.png';
 var speed = "./images/mapIcons/speedLimit.png";
 var traffic = "./images/mapIcons/trafficLight.png";
 
-var presetIconLibrary = [traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
+var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
 
 var latArray = [];
 var longArray = [];
 var iconLibrary = [];
+
+
+var latArray = [];
+var longArray = [];
 
 var markersArray = [];
 
@@ -58,6 +62,12 @@ function visualizeInit() {
 
     var yieldLat = parseFloat(document.getElementById("yieldLat").value);
     var yieldLong = parseFloat(document.getElementById("yieldLong").value);
+
+    var laneStartLat = parseFloat(document.getElementById("laneStartLat").value);
+    var latStartLong = parseFloat(document.getElementById("latStartLong").value);
+    var laneEndLat = parseFloat(document.getElementById("laneEndLat").value);
+    var laneEndLong = parseFloat(document.getElementById("laneEndLong").value);
+
 
 //add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
     var givenFlow = [];
@@ -85,14 +95,17 @@ function visualizeInit() {
       latArray.push(yieldLat);
       longArray.push(yieldLong);
       iconLibrary.push("./images/mapIcons/yeild.png");
+    } else if (document.getElementById("laneEndLong").value != '') {
+
+      latArray.push(laneStartLat);
+      longArray.push(latStartLong);
+      latArray.push(laneEndLat);
+      longArray.push(laneEndLong);
+
     }
 
 
       var givenCenter = {lat: 33.767596, lng: -84.374892};
-
-
-    //latArray.push(givenLatitude);
-    //longArray.push(givenLongitude);
 
 
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -108,8 +121,50 @@ function visualizeInit() {
       placeMarker(latArray[i], longArray[i], map, iconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
+      for (var i = 0; i < latArray.length; i+=2 ) {
+
+        const flightPlanCoordinates = [
+          {
+            lat: latArray[i],
+            lng: longArray[i]
+          },
+          {
+            lat: latArray[i+1],
+            lng: longArray[i+1]
+          }
+        ];
+
+
+        const flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+
+        flightPath.setMap(map);
+
+      }
+
+      document.getElementById("stopLat").value = '';
+      document.getElementById("stopLong").value = '';
+      document.getElementById("speedLat").value = '';
+      document.getElementById("speedLong").value = '';
+      document.getElementById("lightLat").value = '';
+      document.getElementById("lightLong").value = '';
+      document.getElementById("yieldLat").value = '';
+      document.getElementById("yieldLong").value = '';
+      document.getElementById("laneStartLat").value = '';
+      document.getElementById("latStartLong").value = '';
+      document.getElementById("laneEndLat").value = '';
+      document.getElementById("laneEndLong").value = '';
+
+
 }
 //_____________________________________________________________________________________________________________________________________________________________________________________________
+
 
 function placeMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, givenSpeed, givenDensity, givenWait, givenTravel) {
 
