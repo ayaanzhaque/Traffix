@@ -45,6 +45,7 @@ var laneLong = [];
 var c = [];
 
 var markersArray = [];
+var flightPathArray = [];
 
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
@@ -125,7 +126,7 @@ function visualizeInit() {
 
       for (var i = 0; i < laneLat.length; i+=2 ) {
 
-        placeMarker(laneLat[i], laneLong[i], map, "./images/mapIcons/strokeColor.png", i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
+        placeMarker(laneLat[i], laneLong[i], map, "", i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
 
         const flightPlanCoordinates = [
           {
@@ -144,11 +145,14 @@ function visualizeInit() {
           geodesic: true,
           strokeColor: "#FF0000",
           strokeOpacity: 1.0,
-          strokeWeight: 2
+          strokeWeight: 3.5,
+          draggable: true
         });
 
 
         flightPath.setMap(map);
+
+        flightPathArray.push(flightPath);
 
       }
 
@@ -200,7 +204,7 @@ function placeMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, g
     givenWait = '+52.6% min';
     givenTravel= '+ 0.45% min';
 
-  } else if (givenIcon == "./images/mapIcons/strokeColor.png") {
+  } else if (givenIcon == "") {
     givenFlow = '42.1% cpm';
     givenSpeed = '21.2% mph';
     givenDensity = '-33.2% cpl';
@@ -227,7 +231,7 @@ function placeMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, g
         var marker = new google.maps.Marker({
             position: {lat: givenLat, lng: givenLong},
             map: map,
-            title: 'GIVEEEEN MEEEAAAPP',
+            title: 'MARKINGER',
             icon: givenIcon,
             draggable:true
         });
@@ -311,7 +315,7 @@ function presetMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, 
         var marker = new google.maps.Marker({
             position: {lat: givenLat, lng: givenLong},
             map: map,
-            title: 'mappeth',
+            title: 'MAPPETH',
             icon: givenIcon,
             draggable:false
         });
@@ -352,11 +356,13 @@ function presetMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, 
 function deleteMarkers() {
 
   for (var i = 0; i < markersArray.length; i++ ) {
-
     markersArray[i].setMap(null);
+  }
 
+  for (var i = 0; i < flightPathArray.length; i++ ) {
+    flightPathArray[i].setMap(null);
   }
 
   markersArray.length = 0;
-
+  flightPathArray.length = 0;
 }
