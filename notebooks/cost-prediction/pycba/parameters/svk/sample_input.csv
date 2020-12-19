@@ -1,0 +1,8 @@
+econ-discount-factor,0.05
+fin-discount-factor,0.04
+start-year,2020
+construction-time,3
+period,30
+price-level,2020
+country,svk
+currency,eur

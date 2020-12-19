@@ -1,0 +1,15 @@
+category,lanes,layout,environment,unit,scale,fatal,severe_injury,light_injury,damage,nb
+motorway,4,separated,extravilan,acc/vehkm,1e-08,0.407,1.131,3.604,32.765,
+motorway,4,separated,intravilan,acc/vehkm,1e-08,0.287,3.526,11.232,20.903,
+motorway,2,wide,extravilan,acc/vehkm,1e-08,1.386,4.345,13.842,24.723,like standard
+motorway,2,wide,intravilan,acc/vehkm,1e-08,0.529,1.896,6.041,12.83,like standard
+standard,4,separated,extravilan,acc/vehkm,1e-08,1.266,1.914,6.099,19.246,
+standard,4,separated,intravilan,acc/vehkm,1e-08,0.287,3.526,11.232,20.904,
+standard,4,single,extravilan,acc/vehkm,1e-08,1.266,1.914,6.099,19.246,like dual
+standard,4,single,intravilan,acc/vehkm,1e-08,0.612,8.222,26.194,41.78,
+standard,2,wide,extravilan,acc/vehkm,1e-08,1.386,4.345,13.842,24.723,
+standard,2,wide,intravilan,acc/vehkm,1e-08,0.529,1.896,6.041,12.83,
+standard,2,narrow,extravilan,acc/vehkm,1e-08,1.671,5.881,18.737,33.359,
+standard,2,narrow,intravilan,acc/vehkm,1e-08,1.202,6.117,19.488,33.075,
+standard,3,single,extravilan,acc/vehkm,1e-08,1.083,2.022,6.441,35.711,
+standard,3,single,intravilan,acc/vehkm,1e-08,1.083,2.022,6.441,35.711,

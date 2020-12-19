@@ -1,0 +1,5 @@
+acc_type,correct_unreported,correct_pass_per_acc,price_level,value,gdp_growth_adjustment
+fatal,1.02,1.1085,2010,1593000,0.7
+severe_injury,1.5,1.1239,2010,219700,0.7
+light_injury,3.0,1.3154,2010,15700,0.7
+damage,6.0,1.0,2015,3233,0.7

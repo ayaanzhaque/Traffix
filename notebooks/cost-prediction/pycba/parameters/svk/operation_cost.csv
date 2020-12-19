@@ -1,0 +1,17 @@
+item,operation_type,category,price_level,periodicity,unit,value
+road marking,periodic,motorway,2016,6,eur/m2,7.0
+pavements repair,periodic,motorway,2016,6,eur/m2,5.0
+pavements renewal,periodic,motorway,2016,12,eur/m2,20.0
+bridges,periodic,motorway,2016,15,eur/m2,526.0
+tunnels,periodic,motorway,2016,1,eur/m2,35.0
+road marking,periodic,standard,2016,6,eur/m2,0.0
+pavements repair,periodic,standard,2016,6,eur/m2,0.0
+pavements renewal,periodic,standard,2016,12,eur/m2,20.0
+bridges,periodic,standard,2016,15,eur/m2,526.0
+tunnels,periodic,standard,2016,1,eur/m2,35.0
+pavements,routine,motorway,2016,1,eur/m2,2.0
+bridges,routine,motorway,2016,1,eur/m2,2.0
+tunnels,routine,motorway,2016,1,eur/m2,75.0
+pavements,routine,standard,2016,1,eur/m2,2.1
+bridges,routine,standard,2016,1,eur/m2,2.1
+tunnels,routine,standard,2016,1,eur/m2,75.0

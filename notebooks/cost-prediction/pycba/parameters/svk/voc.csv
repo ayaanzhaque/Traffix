@@ -1,0 +1,5 @@
+vehicle,price_level,unit,value
+car,2016,eur/vehkm,0.1425
+bus,2016,eur/vehkm,0.463
+lgv,2016,eur/vehkm,0.3014
+hgv,2016,eur/vehkm,0.9656

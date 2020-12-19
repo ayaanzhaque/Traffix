@@ -1,0 +1,6 @@
+vehicle,fuel,ratio
+car,petrol,0.45
+car,diesel,0.55
+lgv,diesel,1.0
+hgv,diesel,1.0
+bus,diesel,1.0

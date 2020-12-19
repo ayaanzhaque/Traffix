@@ -1,0 +1,5 @@
+vehicle,unit,value
+car,pass/veh,1.8
+bus,pass/veh,20.0
+lgv,pass/veh,1.1
+hgv,pass/veh,1.2

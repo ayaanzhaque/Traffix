@@ -1,0 +1,5 @@
+vehicle,business,commute,private
+car,0.04,0.3,0.66
+bus,0.02,0.37,0.61
+lgv,1.0,0.0,0.0
+hgv,1.0,0.0,0.0

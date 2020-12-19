@@ -1,0 +1,9 @@
+polluant,environment,price_level,unit,value,scale,gdp_growth_adjustment
+nox,extravilan,2010,eur/g,21491,1e-06,0.7
+nox,intravilan,2010,eur/g,21491,1e-06,0.7
+nmvoc,extravilan,2010,eur/g,1709,1e-06,0.7
+nmvoc,intravilan,2010,eur/g,1709,1e-06,0.7
+so2,extravilan,2010,eur/g,17134,1e-06,0.7
+so2,intravilan,2010,eur/g,17134,1e-06,0.7
+pm2.5,extravilan,2010,eur/g,66650,1e-06,0.7
+pm2.5,intravilan,2010,eur/g,226510,1e-06,0.7
