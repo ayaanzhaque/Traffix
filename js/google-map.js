@@ -7,6 +7,7 @@ function initMap() {
 
 
       var stopLat = parseInt(document.getElementById("stopLat").value);
+      var stopLong = parseInt(document.getElementById("stopLong").value);
 
       var speedLat = parseInt(document.getElementById("speedLat").value);
       var speedLong = parseInt(document.getElementById("speedLong").value);
