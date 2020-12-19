@@ -3,7 +3,7 @@ var presetLatArray = [
   33.763901,
   33.763963,
   33.767460,
-  33.767527,
+
   33.767798,
   33.768723,
   33.768654,
@@ -18,7 +18,7 @@ var presetLongArray = [
   -84.367821,
   -84.371933,
   -84.378112,
-  -84.382028,
+
   -84.371164,
   -84.381070,
   -84.381943,
@@ -32,7 +32,7 @@ var stop = './images/mapIcons/redOctagon.png';
 var speed = "./images/mapIcons/speedLimit.png";
 var traffic = "./images/mapIcons/trafficLight.png";
 
-var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
+var presetIconLibrary = [traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
 
 var latArray = [];
 var longArray = [];
@@ -145,6 +145,14 @@ function placeMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, g
         marker.setMap(null);
         });
 
+        marker.addListener('dragend', function(evt) {
+          var position = marker.getPosition()
+          var dragLat = position.lat()
+          var dragLong = position.lng()
+
+          latArray[givenInt] = dragLat;
+          longArray[givenInt] = dragLong;
+        });
 
 markersArray.push(marker);
 
