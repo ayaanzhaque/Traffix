@@ -40,10 +40,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="government.html">Government</a>
+                <a class="nav-link" href="visualize.html">Visualize</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -54,10 +54,10 @@
                 </div>
               </li> -->
               <li class="nav-item">
-                <a class="nav-link active" href="drivers.html">Drivers</a>
+                <a class="nav-link " href="contracting.html">Contractors</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contracting.html">Contractors</a>
+                <a class="nav-link" href="drivers.html">Drivers</a>
               </li>
             </ul>
 
@@ -94,7 +94,7 @@
                 <p class="mb-5 lead">Click On The Projects To Get More Information And Contribute To Funding It!</p>
               </div>
               <div style="width: 100%; height: 500px; overflow: hidden">
-    				<iframe src="hiddentable.html" width="100%" height="700px" frameBorder="0" id='givenIframe' scrolling="yes"></iframe>
+    				<iframe src="hiddentable.html" width="100%" height="550px" frameBorder="0" id='givenIframe' scrolling="yes"></iframe>
     			</div>
     			</center>
     		</div>
@@ -116,7 +116,7 @@
 
 
           <div class="col-md-8 text-center">
-            <form action="#">
+            <form id = "GOAT" action="#">
               <div class="form-group">
                       <textarea name="" id="name" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
                     </div>
@@ -186,6 +186,8 @@
               document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
               document.getElementById("fail").innerHTML = "";
               document.getElementById("fail").style.border = "1px solid white";
+              document.getElementById("GOAT").reset()
+
             }
 
             }
