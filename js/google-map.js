@@ -31,6 +31,7 @@ var presetLongArray = [
 var stop = './images/mapIcons/redOctagon.png';
 var speed = "./images/mapIcons/speedLimit.png";
 var traffic = "./images/mapIcons/trafficLight.png";
+var yielding = "./images/mapIcons/yeild.png";
 
 var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
 
@@ -39,8 +40,9 @@ var longArray = [];
 var iconLibrary = [];
 
 
-var latArray = [];
-var longArray = [];
+var laneLat = [];
+var laneLong = [];
+var c = [];
 
 var markersArray = [];
 
@@ -97,10 +99,10 @@ function visualizeInit() {
       iconLibrary.push("./images/mapIcons/yeild.png");
     } else if (document.getElementById("laneEndLong").value != '') {
 
-      latArray.push(laneStartLat);
-      longArray.push(latStartLong);
-      latArray.push(laneEndLat);
-      longArray.push(laneEndLong);
+      laneLat.push(laneStartLat);
+      laneLong.push(latStartLong);
+      laneLat.push(laneEndLat);
+      laneLong.push(laneEndLong);
 
     }
 
@@ -121,16 +123,18 @@ function visualizeInit() {
       placeMarker(latArray[i], longArray[i], map, iconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
-      for (var i = 0; i < latArray.length; i+=2 ) {
+      for (var i = 0; i < laneLat.length; i+=2 ) {
+
+        placeMarker(laneLat[i], laneLong[i], map, "./images/mapIcons/strokeColor.png", i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
 
         const flightPlanCoordinates = [
           {
-            lat: latArray[i],
-            lng: longArray[i]
+            lat: laneLat[i],
+            lng: laneLong[i]
           },
           {
-            lat: latArray[i+1],
-            lng: longArray[i+1]
+            lat: laneLat[i+1],
+            lng: laneLong[i+1]
           }
         ];
 
@@ -167,6 +171,42 @@ function visualizeInit() {
 
 
 function placeMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, givenSpeed, givenDensity, givenWait, givenTravel) {
+
+  if (givenIcon == stop) {
+    givenFlow = '-10.2% cpm';
+    givenSpeed = '-2.2% mph';
+    givenDensity = '4% cpl';
+    givenWait = '7.45% min';
+    givenTravel= '0.7% min';
+
+  } else if (givenIcon == traffic) {
+    givenFlow = '+9.1% cpm';
+    givenSpeed = '+3.6% mph';
+    givenDensity = '-7.7% cpl';
+    givenWait = '-8.0% min';
+    givenTravel= '-0.9% min';
+
+  } else if (givenIcon == speed) {
+    givenFlow = '+4.5% cpm';
+    givenSpeed = '+48.3% mph';
+    givenDensity = '+10.6% cpl';
+    givenWait = '-1.4% min';
+    givenTravel= '-4.8% min';
+
+  } else if (givenIcon == "./images/mapIcons/yeild.png") {
+    givenFlow = '-13.4% cpm';
+    givenSpeed = '-0.8% mph';
+    givenDensity = '+3.2% cpl';
+    givenWait = '+52.6% min';
+    givenTravel= '+ 0.45% min';
+
+  } else if (givenIcon == "./images/mapIcons/strokeColor.png") {
+    givenFlow = '42.1% cpm';
+    givenSpeed = '21.2% mph';
+    givenDensity = '-33.2% cpl';
+    givenWait = '2.1% min';
+    givenTravel = '-20.6% min';
+  }
 
   var contentString1 = '<div id="content">'+
   '<div id="siteNotice">'+
@@ -227,6 +267,42 @@ function presetMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, 
 '</div>'+
   '</div>';
 
+  var contentString2 = '<div id="content">'+
+  '<div id="siteNotice">'+
+  '</div>'+
+  '<div id="bodyContent">'+
+  '<p><b>Change in Rates of Flow: </b>' + '+8.7% cpm' + '</p>' +
+  '<p><b>Change in Average Speed: </b>'+ '+1.5% mph' + '</p>' +
+  '<p><b>Change in Vehicle Density: </b>'+ '-9.3% cpl' + '</p>' +
+  '<p><b>Change in Intersection Wait Times: </b>' + '-8.4% min' + '</p>' +
+  '<p><b>Change in Average Time of Travel: </b>' + '-1.2% min' + '</p>'
+'</div>'+
+  '</div>';
+
+  var contentString3 = '<div id="content">'+
+  '<div id="siteNotice">'+
+  '</div>'+
+  '<div id="bodyContent">'+
+  '<p><b>Change in Rates of Flow: </b>' + '-12.1% cpm' + '</p>' +
+  '<p><b>Change in Average Speed: </b>'+ '-0.64% mph' + '</p>' +
+  '<p><b>Change in Vehicle Density: </b>'+ '+3.1% cpl' + '</p>' +
+  '<p><b>Change in Intersection Wait Times: </b>' + '+51.4% min' + '</p>' +
+  '<p><b>Change in Average Time of Travel: </b>' + '+0.59% min' + '</p>'
+'</div>'+
+  '</div>';
+
+  var contentString4 = '<div id="content">'+
+  '<div id="siteNotice">'+
+  '</div>'+
+  '<div id="bodyContent">'+
+  '<p><b>Change in Rates of Flow: </b>' + '-8.7% cpm' + '</p>' +
+  '<p><b>Change in Average Speed: </b>'+ '-1.6% mph' + '</p>' +
+  '<p><b>Change in Vehicle Density: </b>'+ '+5.8% cpl' + '</p>' +
+  '<p><b>Change in Intersection Wait Times: </b>' + '+8.22% min' + '</p>' +
+  '<p><b>Change in Average Time of Travel: </b>' + '+1.3% min' + '</p>'
+'</div>'+
+  '</div>';
+
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString1
@@ -245,23 +321,31 @@ function presetMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, 
         });
 
         marker.addListener('rightclick', function() {
+
           if (givenIcon == './images/mapIcons/redOctagon.png') {
 
+            infowindow.setContent(contentString2);
             marker.setIcon("./images/mapIcons/yeild.png");
             givenIcon = "./images/mapIcons/yeild.png";
 
+
+
           } else if (givenIcon == "./images/mapIcons/yeild.png") {
 
+            infowindow.setContent(contentString3);
             marker.setIcon("./images/mapIcons/trafficLight.png");
             givenIcon = "./images/mapIcons/trafficLight.png";
 
           } else if (givenIcon == "./images/mapIcons/trafficLight.png") {
 
+            infowindow.setContent(contentString4);
             marker.setIcon("./images/mapIcons/redOctagon.png");
             givenIcon = "./images/mapIcons/redOctagon.png";
           }
 
-        });
+
+
+          });
 
 }
 
