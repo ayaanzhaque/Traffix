@@ -57,10 +57,9 @@ class Geocoding {
 
 const geofence = async (lat, lng, radius, desc) => {
   await fetch(
-    `https://api.radar.io/v1/geofences?description=${desc}&type=circle&coordinates=[${lng},${lat}]&radius=${radius}`,
     {
       headers: {
-        Authorization: 'prj_live_pk_9960fa9015ec1c672178a43fa62142afc16b6aed',
+        Authorization: '',
       },
       method: 'PUT',
     },
@@ -69,6 +68,37 @@ const geofence = async (lat, lng, radius, desc) => {
   const externalId = desc.split('#')[1];
   return { tag, externalId };
 };
+
+Radar.searchGeofences({
+  radius: r,
+  tags: ['venue'],
+  limit: 10
+}).then((result) => {
+  
+}).catch((err) => {
+
+});
+
+Radar.getDistance({
+  origin: {
+    latitude: latitude,
+    longitude: longitude
+  },
+  destination: {
+    latitude: latitude_final,
+    longitude: longitude_final
+  },
+  modes: [
+    'foot',
+    'car'
+  ],
+  units: 'imperial'
+}).then((result) => {
+  // do something with result.routes
+}).catch((err) => {
+  // optionally, do something with err
+});
+
 
 export default geofence;
 
