@@ -1,6 +1,38 @@
-var presetLatArray = [40.2969, 40.2211];
-var presetLongArray = [-111.6946, -112.7444];
-var presetIconLibrary = ['./images/mapIcons/redOctagon.png', "./images/mapIcons/speedLimit.png", "./images/mapIcons/trafficLight.png"];
+var presetLatArray = [
+  33.771277,
+  33.763901,
+  33.763963,
+  33.767460,
+  33.767527,
+  33.767798,
+  33.768723,
+  33.768654,
+  33.768404,
+  33.764832,
+  33.766621,
+  33.768580
+];
+
+var presetLongArray = [
+  -84.374786,
+  -84.367821,
+  -84.371933,
+  -84.378112,
+  -84.382028,
+  -84.371164,
+  -84.381070,
+  -84.381943,
+  -84.371846,
+  -84.370435,
+  -84.371927,
+  -84.377872
+];
+
+var stop = './images/mapIcons/redOctagon.png';
+var speed = "./images/mapIcons/speedLimit.png";
+var traffic = "./images/mapIcons/trafficLight.png";
+
+var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
 
 var latArray = [];
 var longArray = [];
@@ -8,10 +40,6 @@ var iconLibrary = [];
 
 var markersArray = [];
 
-function driverMap() {
-  //input geocoding stuff here after finished with other map
-
-}
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
@@ -31,21 +59,13 @@ function visualizeInit() {
     var yieldLat = parseInt(document.getElementById("yieldLat").value);
     var yieldLong = parseInt(document.getElementById("yieldLong").value);
 
+//add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
+    var givenFlow = [];
+    var givenSpeed = [];
+    var givenDensity = [];
+    var givenWait = [];
+    var givenTravel = [];
 
-    /*
-    var weather = document.getElementById("forcedWeather").value;
-    var speedLimit = document.getElementById("forcedSpeed").value;
-    var roadSigns = document.getElementById("roadSignsS").value;
-    var roadShape = document.getElementById("roadShapes").value;*/
-
-
-
-
-    var contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<div id="bodyContent">'+
-                '</div>';
 
     if (document.getElementById("stopLat").value != "") {
       latArray.push(stopLat);
@@ -68,7 +88,7 @@ function visualizeInit() {
     }
 
 
-      var givenCenter = {lat: 40.7608, lng: -111.8910};
+      var givenCenter = {lat: 33.767596, lng: -84.374892};
 
 
     //latArray.push(givenLatitude);
@@ -76,25 +96,37 @@ function visualizeInit() {
 
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+        zoom: 16,
         center: givenCenter
       });
 
       for (i = 0; i < presetLatArray.length; i++) {
-      presetMarker(presetLatArray[i], presetLongArray[i], map, contentString, presetIconLibrary[i], i);
+      presetMarker(presetLatArray[i], presetLongArray[i], map, presetIconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
       for (i = 0; i < latArray.length; i++) {
-      placeMarker(latArray[i], longArray[i], map, "", iconLibrary[i], i);
+      placeMarker(latArray[i], longArray[i], map, iconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
 }
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
-function placeMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt) {
+function placeMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt, givenFlow, givenSpeed, givenDensity, givenWait, givenTravel) {
+
+  var contentString1 = '<div id="content">'+
+  '<div id="siteNotice">'+
+  '</div>'+
+  '<div id="bodyContent">'+
+  '<p><b>Change in Rates of Flow: </b>' + givenFlow+ '</p>' +
+  '<p><b>Change in Average Speed: </b>'+ givenSpeed + '</p>' +
+  '<p><b>Change in Vehicle Density: </b>'+ givenDensity + '</p>' +
+  '<p><b>Change in Intersection Wait Times: </b>' + givenWait + '</p>' +
+  '<p><b>Change in Average Time of Travel: </b>' + givenTravel + '</p>' +
+'</div>' +
+  '</div>';
 
         var infowindow = new google.maps.InfoWindow({
-          content: givenContent
+          content: contentString1
         });
 
         var marker = new google.maps.Marker({
@@ -118,21 +150,38 @@ markersArray.push(marker);
 
 }
 
-function presetMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt) {
+function presetMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, givenSpeed, givenDensity, givenWait, givenTravel) {
+
+  var contentString1 = '<div id="content">'+
+  '<div id="siteNotice">'+
+  '</div>'+
+  '<div id="bodyContent">'+
+  '<p><b>Change in Rates of Flow: </b>' + givenFlow+ '</p>' +
+  '<p><b>Change in Average Speed: </b>'+ givenSpeed + '</p>' +
+  '<p><b>Change in Vehicle Density: </b>'+ givenDensity + '</p>' +
+  '<p><b>Change in Intersection Wait Times: </b>' + givenWait + '</p>' +
+  '<p><b>Change in Average Time of Travel: </b>' + givenTravel+ '</p>'
+'</div>'+
+  '</div>';
+
 
         var infowindow = new google.maps.InfoWindow({
-          content: givenContent
+          content: contentString1
         });
 
         var marker = new google.maps.Marker({
             position: {lat: givenLat, lng: givenLong},
             map: map,
-            title: 'GIVEEEEN MEEEAAAPP',
+            title: 'mappeth',
             icon: givenIcon,
             draggable:false
         });
 
         marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+
+        marker.addListener('rightclick', function() {
           if (givenIcon == './images/mapIcons/redOctagon.png') {
 
             marker.setIcon("./images/mapIcons/yeild.png");
