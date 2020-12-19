@@ -1,114 +1,84 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding Service</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
 
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 80%;
+        margin: 0;
+        padding: 0;
+      }
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-  <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-  <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
-
-  <!-- Theme Style -->
-  <link rel="stylesheet" href="css/style.css">
-
-
-</head>
-<body>
-
-  <section class="ftco-section">
-  <div class="container">
-
-    <style>
-      .newfaq {
-
-        background: #fff;
-
-        border: 1px solid #198bcf;
-        border-radius: 50px;
-
-        padding-top: 15px;
-        padding-right: 5px;
-        padding-bottom: 15px;
-        padding-left: 5px;
-
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: "Roboto", "sans-serif";
+        line-height: 30px;
+        padding-left: 10px;
       }
     </style>
+    <script>
+      var final_results = [];
+      function geocodeAddress(geocoder, resultsMap) {
+        const address = document.getElementById("address").value;
+        geocoder.geocode({ address: address }, (results, status) => {
+          if (status === "OK") {
+
+            final_results = results;
+
+            /*resultsMap.setCenter(results[0].geometry.location);
+            new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location,
+            });*/
+
+          } else {
+            alert(
+              "Geocode was not successful for the following reason: " + status
+            );
+          }
+        });
+      }
 
 
-    <div class="row justify-content-center mb-5 element-animate">
-      <div class="col-md-8 text-center">
-        <h2 class=" heading mb-4">Frequently Asked Questions</h2>
-      </div>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: { lat: -34.397, lng: 150.644 },
+        });
+        const geocoder = new google.maps.Geocoder();
+        document.getElementById("submit").addEventListener("click", () => {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      
+    </script>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW" />
+      <input id="submit" type="button" value="Geocode" />
     </div>
-
-
-    <div class="row">
-      <div class="col-md-12 ftco-animate">
-        <div id="accordion">
-          <div class="row">
-
-            <div class="col-md-6">
-              <div class="newfaq" class="card-link" data-toggle="collapse"  href="#menu1" aria-expanded="false" aria-controls="menu1">
-                <center><a style='color: black !important; font-size: 18px !important;'> Who is this application specifically meant for? <span class="collapsed"><i class="ion-ios-arrow-up"></i></span><span class="expanded"><i class="ion-ios-arrow-down"></i></span></a></center>
-                <div id="menu1" class="collapse">
-                  <div class="card-body">
-                    <p style='color: black !important;'>This application is mainly meant for friends of those who are going through depression so they can accurately see specifically what their friend is dealing with. Additionally, therapists and doctors can also use our algorithm to better understand their patients especially when their phrases are hard to distinguish and cryptic. <br> <br></p>
-                  </div>
-                </div>
-              </div>
-
-              <br>
-              <div class="newfaq" class="card-link" data-toggle="collapse"  href="#menu2" aria-expanded="false" aria-controls="menu2">
-                <center><a style='color: black !important; font-size: 18px !important;'> Who is this application specifically meant for? <span class="collapsed"><i class="ion-ios-arrow-up"></i></span><span class="expanded"><i class="ion-ios-arrow-down"></i></span></a></center>
-
-                <div id="menu2" class="collapse">
-                  <div class="card-body">
-                    <p style='color: black !important;'>This application is mainly meant for friends of those who are going through depression so they can accurately see specifically what their friend is dealing with. Additionally, therapists and doctors can also use our algorithm to better understand their patients especially when their phrases are hard to distinguish and cryptic. <br> <br></p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-
-            <div class="col-md-6">
-              <div class="newfaq" class="card-link" data-toggle="collapse"  href="#menu3" aria-expanded="false" aria-controls="menu3">
-                <center><a style='color: black !important; font-size: 18px !important;'> Who is this application specifically meant for? <span class="collapsed"><i class="ion-ios-arrow-up"></i></span><span class="expanded"><i class="ion-ios-arrow-down"></i></span></a></center>
-
-                <div id="menu3" class="collapse">
-                  <div class="card-body">
-                    <p style='color: black !important;'>This application is mainly meant for friends of those who are going through depression so they can accurately see specifically what their friend is dealing with. Additionally, therapists and doctors can also use our algorithm to better understand their patients especially when their phrases are hard to distinguish and cryptic. <br> <br></p>
-                  </div>
-                </div>
-              </div>
-              <br>
-              <div class="newfaq" class="card-link" data-toggle="collapse"  href="#menu4" aria-expanded="false" aria-controls="menu4">
-                <center><a style='color: black !important; font-size: 18px !important;'> Who is this application specifically meant for? <span class="collapsed"><i class="ion-ios-arrow-up"></i></span><span class="expanded"><i class="ion-ios-arrow-down"></i></span></a></center>
-
-                <div id="menu4" class="collapse">
-                  <div class="card-body">
-                    <p style='color: black !important;'>This application is mainly meant for friends of those who are going through depression so they can accurately see specifically what their friend is dealing with. Additionally, therapists and doctors can also use our algorithm to better understand their patients especially when their phrases are hard to distinguish and cryptic. <br> <br></p>
-                  </div>
-                </div>
-              </div>
-
-</section>
-
-
-
+    <div id="map"></div>
   </body>
-
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/main.js"></script>
-
-  </html>
+</html>

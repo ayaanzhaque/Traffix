@@ -38,6 +38,7 @@ var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop
 var latArray = [];
 var longArray = [];
 var iconLibrary = [];
+var markerArray = [];
 
 
 var laneLat = [];
@@ -47,12 +48,29 @@ var c = [];
 var markersArray = [];
 var flightPathArray = [];
 
+var final_results = [];
+
+//__________________________________________________
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
 
 function visualizeInit() {
 
+  const given_geocoder = new google.maps.Geocoder();
+var user_address = "19301 Harleigh Drive, Saratoga, CA 95070";
+
+function geocodeAddress(geocoder, address) {
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
+      return results[0].geometry.location;
+    } else {
+      alert(
+        "Geocode was not successful for the following reason: " + status
+      );
+    }
+  });
+}
 
     var stopLat = parseFloat(document.getElementById("stopLat").value);
     var stopLong = parseFloat(document.getElementById("stopLong").value);
@@ -79,10 +97,13 @@ function visualizeInit() {
     var givenWait = [];
     var givenTravel = [];
 
+    var user_address = "19301 Harleigh Drive, Saratoga, CA 95070";
 
     if (document.getElementById("stopLat").value != "") {
-      latArray.push(stopLat);
-      longArray.push(stopLong);
+
+      user_results = geocodeAddress(given_geocoder, user_address);
+      latArray.push(user_results['lat']);
+      longArray.push(user_results['lng']);
       iconLibrary.push(stop);
 
     } else if (document.getElementById("speedLat").value != "") {
