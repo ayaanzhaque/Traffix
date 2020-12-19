@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Traffix - Drivers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=initMap"
+      defer
+    ></script>
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+
+    <header role="banner">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand " href="index.html">Traffix</a>
+          <right><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation"><right>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExample05">
+            <ul class="navbar-nav pl-md-5">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="visualize.html">Visualize</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="government.html">Government</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="services.html">Architectural Design</a>
+                  <a class="dropdown-item" href="services.html">Interior</a>
+                  <a class="dropdown-item" href="services.html">Building</a>
+                </div>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link active" href="drivers.html">Drivers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contracting.html">Contractors</a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+    <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image: url('images/d1.png');">
+
+        <div class="container">
+          <div class="row slider-text align-items-center justify-content-center">
+            <div class="col-md-8 text-center col-sm-12 element-animate">
+              <h1>Drivers</h1>
+              <p class="mb-5">Contribute to your city by testing and proposing adjustments to your roads.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- END slider -->
+
+    <section class="section">
+      <div class="container">
+
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <h2 class=" heading mb-4">Propose an Adjustment</h2>
+            <p>Please provide the address and a short description of your proposal. Test your proposal if you would like!</p>
+          </div>
+        </div>
+
+        </div>
+
+        <div class="container-fluid">
+          <div class="row justify-content-center mb-5 element-animate">
+            <div class="col-md-8 text-center">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <form action="#">
+              <div class="form-group">
+                      <textarea name="" id="forcedLatitude" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
+                    </div>
+              <div class="form-group">
+                      <textarea name="" id="forcedLongitude" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+                    </div>
+
+            </form>
+            </div>
+
+            <div class="col-md-8 text-center">
+            <button class="btn btn-primary py-3 px-5" type="button" onClick="driverPage()">Submit</button>
+          </div>
+
+          </div>
+        </div>
+
+    </section>
+
+
+
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-4 mb-5">
+            <h3>Traffix</h3>
+            <p class="mb-5">Using AI to promote smarter road infrastructure design.</p>
+
+          </div>
+          <div class="col-md-5 mb-5 pl-md-5">
+            <h3>Contact Info</h3>
+            <ul class="list-unstyled footer-link">
+              <li class="d-block">
+                <span class="d-block">Ayaan Haque:</span>
+                <span class="text-white">ayaanzhaque@gmail.com</span></li>
+                <span class="d-block">Viraaj Reddi:</span>
+                <span class="text-white">viraajreddi@gmail.com</span></li>
+                <span class="d-block">Adithya Peruvemba:</span>
+                <span class="text-white">adtithya.peruvemba@gmail.com</span></li>
+                <span class="d-block">Ishaan Bhandari:</span>
+                <span class="text-white">ishaanbhandari0@gmail.com</span></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5">
+            <h3>Quick Links</h3>
+            <ul class="list-unstyled footer-link">
+              <li><a href="index.html">Index</a></li>
+              <li><a href="government.html">Government</a></li>
+              <li><a href="visualize.html">Visualize</a></li>
+              <li><a href="drivers.html">Drivers</a></li>
+              <li><a href="contracting.html">Contractors</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END footer -->
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/google-map.js"></script>
+    <script>
+    function submitCrashData() {
+
+      var latlat = document.getElementById("forcedLatitude").value;
+      var longlong = document.getElementById("forcedLongitude").value;
+
+      if (latlat == "") {
+        document.getElementById("captionCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
+        document.getElementById("captionCrashData").style["border"] = "1px solid red";
+      } else if (longlong == "") {
+        document.getElementById("captionCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
+        document.getElementById("captionCrashData").style["border"] = "1px solid red";
+      } else {
+        document.getElementById("captionCrashData").textContent = "Your information has been successfully submitted.";
+        document.getElementById("captionCrashData").style["border"] = "1px solid green";
+      }
+
+        document.getElementById("realCrashData").style.display = "block";
+
+
+    }
+
+    </script>
+  </body>
+</html>
