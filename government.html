@@ -36,10 +36,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="government.html">Government</a>
+                <a class="nav-link" href="visualize.html">Visualize</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="drivers.html">Drivers</a>
@@ -80,7 +80,8 @@
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
             <h2 class=" heading mb-4">Upload Traffic Data</h2>
-            <p>Please upload your traffic data on specific roads and intersections you would like to test with. Please upload as a CSV.</p>
+            <p class="mb-5 lead">Please upload your traffic data on specific roads and intersections you would like to test with. Please upload as a CSV.</p>
+
             <label for="file-upload" class="btn btn-primary px-4 py-3">Upload File</label>
             <input id="file-upload" type="file"/>
           </div>
@@ -88,7 +89,7 @@
 
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
-            <form method = "post" action="#">
+            <form id = "GOAT" method = "post" action="#">
                 <div class="col-md-12 pr-md-5">
               <div class="form-group">
                       <textarea name="" id="namename" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
@@ -142,6 +143,7 @@
               document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
               document.getElementById("fail").innerHTML = "";
               document.getElementById("fail").style.border = "1px solid white";
+              document.getElementById("GOAT").reset()
             }
 
             }
