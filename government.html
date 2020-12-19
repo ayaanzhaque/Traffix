@@ -80,8 +80,7 @@
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
             <h2 class=" heading mb-4">Upload Traffic Data</h2>
-            <p class="mb-5 lead">Please upload your traffic data on specific roads and intersections you would like to test with. Please upload as a CSV.</p>
-
+            <p>Please upload your traffic data on specific roads and intersections you would like to test with. Please upload as a CSV.</p>
             <label for="file-upload" class="btn btn-primary px-4 py-3">Upload File</label>
             <input id="file-upload" type="file"/>
           </div>
@@ -89,7 +88,7 @@
 
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
-            <form action="#">
+            <form method = "post" action="#">
                 <div class="col-md-12 pr-md-5">
               <div class="form-group">
                       <textarea name="" id="namename" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
@@ -104,17 +103,58 @@
                       <textarea name="" id="addressaddress" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
                     </div>
                     </div>
+              <div class="row justify-content-center mb-5 element-animate">
+                      <div class="col-md-8 text-center">
+                        <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction()">Submit</button>
+                      </div>
+              </div>
+              <style>
+												.redDiv {
+													display: none;
+													border: 1px solid red;
+												}
+												</style>
+              <p id = "demo"></p>
+              <p class = "redDiv" id = "fail"></p>
+              <script>
+              function beastfunction(){
+              var name = document.getElementById("namename").value;
+              var email = document.getElementById("emailemail").value;
+              var city = document.getElementById("citycity").value;
+              var address = document.getElementById("addressaddress").value;
+              if (name == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (email == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (city == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (address == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else {
+              document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
+              document.getElementById("fail").innerHTML = "";
+              document.getElementById("fail").style.border = "1px solid white";
+            }
+
+            }
+
+              </script>
+
             </form>
 
 
 
           </div>
 
-          <script>
-                       function testSubmitFunction() {
-                         document.getElementById("hometown").style.display = "block";
-                       }
-                     </script>
+
 
 
                    </div>
@@ -122,51 +162,16 @@
 
        <p></p>
 
-                 <div id="hometown" style="display: none">
-                     <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
-                 </div>
+
                </center>
                          </div>
+          </form>
 
-       <script>
-         function testSubmitFunctionTwo() {
-           document.getElementById("hometownTwo").style.display = "block";
-         }
-       </script>
-                   </div>
-                 </form>
-         <p class="null"></p>
-       <div id="hometownTwo" style="display: none">
-           <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
-       </div>
-                 </center>
-               </div>
 
-         <script>
-         function openCity(evt, cityName) {
-           var i, tabcontent, tablinks;
-           tabcontent = document.getElementsByClassName("tabcontent");
-           for (i = 0; i < tabcontent.length; i++) {
-             tabcontent[i].style.display = "none";
-           }
-           tablinks = document.getElementsByClassName("tablinks");
-           for (i = 0; i < tablinks.length; i++) {
-             tablinks[i].className = tablinks[i].className.replace(" active", "");
-           }
-           document.getElementById(cityName).style.display = "block";
-           evt.currentTarget.className += " active";
-         }
 
-         document.getElementById("defaultOpen").click();
-         </script>
 
-        </div>
 
-        <div class="row justify-content-center mb-5 element-animate">
-          <div class="col-md-8 text-center">
-            <button class="btn btn-primary py-3 px-5" type="button" onClick="submitCrashData()">Submit</button>
-          </div>
-        </div>
+
 
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
