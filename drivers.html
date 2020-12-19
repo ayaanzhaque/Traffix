@@ -85,6 +85,23 @@
     </section>
     <!-- END slider -->
 
+
+        <section class="section border-t pb-0">
+          <div class="container">
+            <div class="row justify-content-center mb-5 element-animate">
+              <div class="col-md-8 text-center">
+                <h2 class=" heading mb-4">Upcoming Projects from Government and Private Planners</h2>
+                <p class="mb-5 lead">Click On The Projects To Get More Information And Contribute To Funding It!</p>
+              </div>
+              <div style="width: 100%; height: 500px; overflow: hidden">
+    				<iframe src="hiddentable.html" width="100%" height="500px" frameBorder="0" id='givenIframe' scrolling="yes"></iframe>
+    			</div>
+    			</center>
+    		</div>
+            </div>
+          </div>
+        </section>
+
     <section class="section">
       <div class="container">
 
@@ -92,101 +109,11 @@
           <div class="col-md-8 text-center">
             <h2 class=" heading mb-4">Propose an Adjustment</h2>
             <p>Please provide the address and a short description of your proposal. Test your proposal if you would like!</p>
+            <a href="visualize.html"  class="btn btn-primary px-6 py-3">&nbsp&nbsp&nbsp&nbsp&nbspPlan&nbsp&nbsp&nbsp&nbsp&nbsp</a>
           </div>
         </div>
         </div>
 
-          <div class="container">
-            <div class="row justify-content-center mb-5 element-animate">
-              <div class="col-md-8 text-center">
-            <div class="tab">
-              <button class="tablinks" onclick="openCity(event, 'StopSign')">Stop Sign</button>
-              <button class="tablinks" onclick="openCity(event, 'SpeedLimit')">Speed Limit</button>
-              <button class="tablinks" onclick="openCity(event, 'StopLight')">Stop Light</button>
-              <button class="tablinks" onclick="openCity(event, 'Lanes')">Lanes</button>
-            </div>
-
-            <div id="StopSign" class="tabcontent">
-              <h3>Stop Sign</h3>
-              <form action="#">
-            <div class="form-group">
-                    <textarea name="" id="stopLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                  </div>
-            <div class="form-group">
-                    <textarea name="" id="stopLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                  </div>
-                </form>
-                <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
-             </div>
-
-             <div id="SpeedLimit" class="tabcontent">
-               <h3>Speed Limit</h3>
-               <form action="#">
-             <div class="form-group">
-                     <textarea name="" id="speedLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                   </div>
-             <div class="form-group">
-                     <textarea name="" id="speedLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                   </div>
-                   <div class="form-group">
-                           <textarea name="" id="speedSpeed" cols="30" rows="1" class="form-control" placeholder="Speed limit of sign"></textarea>
-                         </div>
-                 </form>
-                 <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
-              </div>
-
-              <div id="StopLight" class="tabcontent">
-                <h3>Stop Light</h3>
-                <form action="#">
-              <div class="form-group">
-                      <textarea name="" id="lightLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                    </div>
-              <div class="form-group">
-                      <textarea name="" id="lightLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                    </div>
-                  </form>
-                  <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
-               </div>
-
-               <div id="Lanes" class="tabcontent">
-                 <h3>Lanes</h3>
-                 <form action="#">
-                   <label>Starting point</label>
-               <div class="form-group">
-                       <textarea name="" id="laneStartLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                     </div>
-               <div class="form-group">
-                       <textarea name="" id="latStartLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                     </div>
-
-                     <label>Ending point</label>
-                     <div class="form-group">
-                             <textarea name="" id="laneEndLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                           </div>
-                     <div class="form-group">
-                             <textarea name="" id="laneEndLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                           </div>
-                   </form>
-                   <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
-                </div>
-
-            </div>
-            </div>
-            </div>
-
-
-        <!-- IGNORE THIS DIVVVVVVVV ___________________________________________________ -->
-
-
-            <div class="container-fluid">
-              <div class="row justify-content-center mb-5 element-animate">
-                <div class="col-md-8 text-center">
-                  <div id="map"></div>
-                </div>
-              </div>
-            </div>
-
-        </section>
 
         <div class="container">
         <div class="row justify-content-center mb-5 element-animate">
