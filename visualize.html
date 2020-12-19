@@ -42,10 +42,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="government.html">Government</a>
+                <a class="nav-link active" href="visualize.html">Visualize</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -69,14 +69,14 @@
     </header>
     <!-- END header -->
 
-    <section class="home-slider inner-page owl-carousel">
-      <div class="slider-item" style="background-image: url('images/slider-1.jpg');">
+    <section class="home-slider owl-carousel">
+  <div class="slider-item" style="background-image: url('images/4.png');">
 
         <div class="container">
           <div class="row slider-text align-items-center justify-content-center">
             <div class="col-md-8 text-center col-sm-12 element-animate">
               <h1>Visualize</h1>
-              <p class="mb-5 sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>
+              <p class="mb-5 sub-text">Experiment and Envision your proposals for road infrastructure changes and see how they will improve traffic flow</p>
             </div>
           </div>
         </div>
@@ -88,13 +88,95 @@
     <section class="section">
       <div class="container">
 
-
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
             <h2 class=" heading mb-4">Your Map</h2>
           </div>
         </div>
 
+
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'StopSign')">Stop Sign</button>
+          <button class="tablinks" onclick="openCity(event, 'SpeedLimit')">Speed Limit</button>
+          <button class="tablinks" onclick="openCity(event, 'StopLight')">Stop Light</button>
+          <button class="tablinks" onclick="openCity(event, 'Lanes')">Lanes</button>
+        </div>
+
+        <div id="StopSign" class="tabcontent">
+          <h3>Stop Sign</h3>
+          <form action="#">
+        <div class="form-group">
+                <textarea name="" id="stopLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+              </div>
+        <div class="form-group">
+                <textarea name="" id="stopLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+              </div>
+            </form>
+            <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+         </div>
+
+         <div id="SpeedLimit" class="tabcontent">
+           <h3>Speed Limit</h3>
+           <form action="#">
+         <div class="form-group">
+                 <textarea name="" id="speedLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+               </div>
+         <div class="form-group">
+                 <textarea name="" id="speedLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+               </div>
+               <div class="form-group">
+                       <textarea name="" id="speedSpeed" cols="30" rows="1" class="form-control" placeholder="Speed limit of sign"></textarea>
+                     </div>
+             </form>
+             <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+          </div>
+
+          <div id="StopLight" class="tabcontent">
+            <h3>Stop Light</h3>
+            <form action="#">
+          <div class="form-group">
+                  <textarea name="" id="lightLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                </div>
+          <div class="form-group">
+                  <textarea name="" id="lightLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                </div>
+              </form>
+              <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+           </div>
+
+           <div id="Lanes" class="tabcontent">
+             <h3>Lanes</h3>
+             <form action="#">
+               <label>Starting point</label>
+           <div class="form-group">
+                   <textarea name="" id="laneStartLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                 </div>
+           <div class="form-group">
+                   <textarea name="" id="latStartLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                 </div>
+
+                 <label>Ending point</label>
+                 <div class="form-group">
+                         <textarea name="" id="laneEndLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                       </div>
+                 <div class="form-group">
+                         <textarea name="" id="laneEndLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                       </div>
+               </form>
+               <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+            </div>
+
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- IGNORE THIS DIVVVVVVVV ___________________________________________________ -->
+    <div hidden>
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
             <form action="#">
@@ -104,30 +186,14 @@
           <div class="form-group">
                   <textarea name="" id="forcedLongitude" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
                 </div>
-          <div class="form-group">
-                  <textarea name="" id="forcedWeather" cols="30" rows="1" class="form-control" placeholder="Weather"></textarea>
-                </div>
-
-          <div class="form-group">
-                       <textarea name="" id="forcedSpeed" cols="30" rows="1" class="form-control" placeholder="Speed Limit"></textarea>
-              </div>
-          <div class="form-group">
-                      <textarea name="" id="roadSignsS" cols="30" rows="1" class="form-control" placeholder="Road Signs"></textarea>
-              </div>
-              <div class="form-group">
-                      <textarea name="" id="roadShapes" cols="30" rows="1" class="form-control" placeholder="Road Shape"></textarea>
-                    </div>
            </div>
         </form>
           </div>
-
           <div class="row justify-content-center mb-5 element-animate">
             <div class="col-md-8 text-center">
-              <button class="btn btn-primary py-3 px-5" type="button" onClick="initMap();">Submit</button>
+              <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
             </div>
           </div>
-
-
         </div>
 
         <div class="container-fluid">
@@ -137,8 +203,81 @@
             </div>
           </div>
         </div>
-    </section>
 
+        <div class="container-fluid">
+          <div class="row justify-content-center mb-5 element-animate">
+            <div class="col-md-8 text-center">
+              <a onclick="showData()"  class="btn btn-primary py-3 px-5">Save</a>
+              <script>
+
+              </script>
+            </div>
+          </div>
+        </div>
+    </section>
+    <script>
+    function showData() {
+
+
+    document.getElementById("submission").style.display = "block";
+  }
+
+    </script>
+  <div id = "submission" style = "display: none">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <h2 class="mb-4">Your Proposal</h2>
+          <p>Here are summarized statistics about your proposed adjustments. On the left are the statistic you already have seen related to traffic improvements. On the right are cost predictions of your proposal.</p>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-right">
+            <div class="card">
+              <!-- <div class="card-img">
+                <img div style="width: 520px; height: 530px; overflow: hidden" src="images/william.jpeg" alt="...">
+              </div> -->
+              <div class="card-body">
+                <h3 class="card-title"><a href="">Traffic Improvements:</a></h3>
+                <p class="card-text"><b>Traffic Flow (cars/min):</b> 1500 </p>
+                <p class="card-text"><b>Decrease in intersection time:</b>  NA </p>
+                <p class="card-text"><b>Decrease in number of lengthy intersections:</b> a couple few </p>
+                <p class="card-text"><b>Reduction in average travel time across street:</b> increase bruh </p>
+                <p class="card-text"><b>Safety?:</b> no bruh</p>
+              </div>
+            </div>
+          </div>
+
+
+                    <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-left">
+                      <div class="card">
+                        <!-- <div style="width: 600px; height: 530px; overflow: hidden" class="card-img">
+                          <img src="images/shereen.jpg" width="540" alt="...">
+                        </div> -->
+                        <div class="card-body">
+                          <h3 class="card-title"><a href="">Project Costs:</a></h3>
+                          <p class="card-text"><b>Cost Per Stop Sign:</b> big bands </p>
+                          <p class="card-text"><b>Cost Per Traffic Lights:</b> big bands </p>
+                          <p class="card-text"><b>Cost Per Speed Limit Sign:</b> big bands </p>
+                          <p class="card-text"><b>Cost Per Lane:</b> big bands </p>
+                          <p class="card-text"><b>Total Cost:</b> big bands.</p>
+
+
+                        </div>
+                      </div>
+
+                </div>
+
+              </div>
+</div>
+</div>
+<section>
+
+  <br>  <br>
+  <br>
+  <br>
+
+  </section
 
 
     <!-- END section -->
@@ -193,5 +332,20 @@
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/google-map.js"></script>
+    <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
   </body>
 </html>
