@@ -37,10 +37,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="government.html">Government</a>
+                <a class="nav-link" href="visualize.html">Visualize</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -108,7 +108,7 @@
 
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
-            <form action="#">
+            <form id = "GOAT" action="#">
               <div class="form-group">
                       <textarea name="" id="conName" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
                     </div>
@@ -177,6 +177,8 @@
               document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
               document.getElementById("fail").innerHTML = "";
               document.getElementById("fail").style.border = "1px solid white";
+              document.getElementById("GOAT").reset()
+
             }
 
             }
@@ -195,7 +197,7 @@
 
 
 
-    
+
 
 
 
