@@ -37,10 +37,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="government.html">Government</a>
+                <a class="nav-link" href="visualize.html">Visualize</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="visualize.html">Visualize</a>
+                <a class="nav-link" href="government.html">Government</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -80,23 +80,6 @@
     </section>
     <!-- END slider -->
 
-
-    <section class="section border-t pb-0">
-      <div class="container">
-        <div class="row justify-content-center mb-5 element-animate">
-          <div class="col-md-8 text-center">
-            <h2 class=" heading mb-4">Check Our Upcoming Projects</h2>
-            <p class="mb-5 lead">Click On The Projects To Get More Information And Contribute To Funding It!</p>
-          </div>
-          <div style="width: 100%; height: 500px; overflow: hidden">
-				<iframe src="hiddentable.html" width="100%" height="500px" frameBorder="0" id='givenIframe' scrolling="yes"></iframe>
-			</div>
-			</center>
-		</div>
-        </div>
-      </div>
-    </section>
-
     <section class="section">
       <div class="container">
 
@@ -109,17 +92,16 @@
         </div>
 
         </div>
-    </section>
 
-
-    <section class="section">
       <div class="container">
 
         <div class="row justify-content-center mb-5 element-animate">
           <div class="col-md-8 text-center">
             <h2 class=" heading mb-4">Planned Out Your Project?</h2>
             <p class="mb-5 lead">Fill Out The Questionaire Detailing Key Information On It To Propose It To The Government</p>
-            <label for="file-upload" class="btn btn-primary px-4 py-3">Upload File</label>
+            <label for="file-upload" class="btn btn-primary px-4 py-3">Upload Current Picture</label>
+            <input id="file-upload" type="file"/>
+            <label for="file-upload" class="btn btn-primary px-4 py-3">Upload A Downloaded Image of The Results From Our Visualize Tool</label>
             <input id="file-upload" type="file"/>
           </div>
         </div>
@@ -128,85 +110,92 @@
           <div class="col-md-8 text-center">
             <form action="#">
               <div class="form-group">
-                      <textarea name="" id="forcedLatitude" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
+                      <textarea name="" id="conName" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
                     </div>
               <div class="form-group">
-                      <textarea name="" id="forcedLongitude" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                      <textarea name="" id="conEmail" cols="30" rows="1" class="form-control" placeholder="Email"></textarea>
+                    </div>
+             <div class="form-group">
+                      <textarea name="" id="conExistingDesc" cols="30" rows="1" class="form-control" placeholder="What Are The Features And Problems On The Current Road? Describe in detail. "></textarea>
                     </div>
               <div class="form-group">
-                      <textarea name="" id="forcedWeather" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                    </div>
+                <textarea name="" id="conEdit" cols="30" rows="1" class="form-control" placeholder="What Is Your Change You Are Planning To Make On The Road? Descibe in detail. "></textarea>
+              </div>
+              <div class="form-group">
+                <textarea name="" id="conCost" cols="30" rows="1" class="form-control" placeholder="How much does your project cost?"></textarea>
+              </div>
+              <div class="form-group">
+                <textarea name="" id="conGoal" cols="30" rows="1" class="form-control" placeholder="What is your fundraising goal?"></textarea>
+              </div>
+              <div class="row justify-content-center mb-5 element-animate">
+                <div class="col-md-8 text-center">
+                  <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction1()">Submit</button>
+                </div>
+              </div>
+              <style>
+												.redDiv {
+													display: none;
+													border: 1px solid red;
+												}
+												</style>
+              <p id = "demo"></p>
+              <p class = "redDiv" id = "fail"></p>
+              <script>
+              function beastfunction1(){
+              var name = document.getElementById("conName").value;
+              var email = document.getElementById("conEmail").value;
+              var edesc = document.getElementById("conExistingDesc").value;
+              var ndesc = document.getElementById("conEdit").value;
+              var cost = document.getElementById("conCost").value;
+              var goal = document.getElementById("conGoal").value;
 
-              <div class="form-group">
-                           <textarea name="" id="forcedSpeed" cols="30" rows="1" class="form-control" placeholder="Existing Speed Limit"></textarea>
-                  </div>
-              <div class="form-group">
-                          <textarea name="" id="roadSignsS" cols="30" rows="1" class="form-control" placeholder="Existing Road Signs"></textarea>
-                  </div>
-                  <div class="form-group">
-                          <textarea name="" id="roadShapes" cols="30" rows="1" height = "200px" class="form-control" placeholder="Existing Road Shape"></textarea>
-                        </div>
-                        <div class="form-group">
-                                <textarea name="" id="roadShapes" cols="30" rows="1" class="form-control" placeholder="Normal Road Descriptions(eg. Road Conditions, Weather)"></textarea>
-                              </div>
-                              <div class="form-group">
-                                      <textarea name="" id="roadShapes" cols="30" rows="1" class="form-control" placeholder="What Is Your Change You Are Planning To Make On The Road? Descibe in detail. "></textarea>
-                                    </div>
-                                    </form>
-                        </div>
-          </div>
+              if (name == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (email == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (edesc == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (ndesc == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (cost == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }else if (goal == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }else {
+              document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
+              document.getElementById("fail").innerHTML = "";
+              document.getElementById("fail").style.border = "1px solid white";
+            }
 
-          <div class="row justify-content-center mb-5 element-animate">
-            <div class="col-md-8 text-center">
-              <button class="btn btn-primary py-3 px-5" type="button" onClick="initMap();submitCrashData();">Submit</button>
-            </div>
+            }
+
+              </script>
+
+            </form>
           </div>
+        </div>
+
+
         </div>
 
     </section>
 
 
-      <script>
-      function submitCrashData() {
-
-        var latlat = document.getElementById("forcedLatitude").value;
-        var longlong = document.getElementById("forcedLongitude").value;
-
-        if (latlat == "") {
-          document.getElementById("captionCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
-          document.getElementById("captionCrashData").style["border"] = "1px solid red";
-        } else if (longlong == "") {
-          document.getElementById("captionCrashData").textContent = "Not all information was entered. Please fill out all the text boxes.";
-          document.getElementById("captionCrashData").style["border"] = "1px solid red";
-        } else {
-          document.getElementById("captionCrashData").textContent = "Your information has been successfully submitted.";
-          document.getElementById("captionCrashData").style["border"] = "1px solid green";
-        }
-
-          document.getElementById("realCrashData").style.display = "block";
 
 
-      }
-
-      </script>
-
-      <style>
-      .crashDataStyle {
-
-      text-align: center;
-      color: #000000;
-      border: 1px solid green;
-      display: block;
-      }
-      </style>
-
-      <div id="realCrashData" style="display: none">
-
-        <br>
-      <p id="captionCrashData" class="crashDataStyle">Your information has been successfully submitted.</p>
-      </div>
-
-      </center>
+    
 
 
 
