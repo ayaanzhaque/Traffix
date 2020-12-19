@@ -1,6 +1,38 @@
-var presetLatArray = [40.2969, 40.2211];
-var presetLongArray = [-111.6946, -112.7444];
-var presetIconLibrary = ['./images/mapIcons/redOctagon.png', "./images/mapIcons/speedLimit.png", "./images/mapIcons/trafficLight.png"];
+var presetLatArray = [
+  33.771277,
+  33.763901,
+  33.763963,
+  33.767460,
+  33.767527,
+  33.767798,
+  33.768723,
+  33.768654,
+  33.768404,
+  33.764832,
+  33.766621,
+  33.768580
+];
+
+var presetLongArray = [
+  -84.374786,
+  -84.367821,
+  -84.371933,
+  -84.378112,
+  -84.382028,
+  -84.371164,
+  -84.381070,
+  -84.381943,
+  -84.371846,
+  -84.370435,
+  -84.371927,
+  -84.377872
+];
+
+var stop = './images/mapIcons/redOctagon.png';
+var speed = "./images/mapIcons/speedLimit.png";
+var traffic = "./images/mapIcons/trafficLight.png";
+
+var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop, stop, stop, stop, speed, speed];
 
 var latArray = [];
 var longArray = [];
@@ -68,7 +100,7 @@ function visualizeInit() {
     }
 
 
-      var givenCenter = {lat: 40.7608, lng: -111.8910};
+      var givenCenter = {lat: 33.767596, lng: -84.374892};
 
 
     //latArray.push(givenLatitude);
@@ -76,7 +108,7 @@ function visualizeInit() {
 
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+        zoom: 16,
         center: givenCenter
       });
 
