@@ -100,6 +100,7 @@
           <div class="col-md-8 text-center">
         <div class="tab">
           <button class="tablinks" onclick="openCity(event, 'StopSign')">Stop Sign</button>
+          <button class="tablinks" onclick="openCity(event, 'YieldSign')">Yield Sign</button>
           <button class="tablinks" onclick="openCity(event, 'SpeedLimit')">Speed Limit</button>
           <button class="tablinks" onclick="openCity(event, 'StopLight')">Stop Light</button>
           <button class="tablinks" onclick="openCity(event, 'Lanes')">Lanes</button>
@@ -118,15 +119,31 @@
             <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
          </div>
 
+         <div id="YieldSign" class="tabcontent">
+           <h3>Yield Sign</h3>
+           <form action="#">
+         <div class="form-group">
+                 <textarea name="" id="yieldLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+               </div>
+         <div class="form-group">
+                 <textarea name="" id="yieldLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+               </div>
+             </form>
+             <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
+          </div>
+
          <div id="SpeedLimit" class="tabcontent">
            <h3>Speed Limit</h3>
            <form action="#">
          <div class="form-group">
-                 <textarea name="" id="speedLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                 <textarea name="" id="speedLat" cols="30" rows="1" class="form-control" placeholder="Latitude of Sign"></textarea>
                </div>
          <div class="form-group">
-                 <textarea name="" id="speedLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                 <textarea name="" id="speedLong" cols="30" rows="1" class="form-control" placeholder="Longitude of Sign"></textarea>
                </div>
+               <div class="form-group">
+                       <textarea name="" id="speedRoad" cols="30" rows="1" class="form-control" placeholder="Road to Change Speed Limit"></textarea>
+                     </div>
                <div class="form-group">
                        <textarea name="" id="originalspeedSpeed" cols="30" rows="1" class="form-control" placeholder="Original Speed Limit"></textarea>
                      </div>
@@ -192,10 +209,6 @@
 
         <div class="container">
           <div class="row justify-content-center mb-5 element-animate">
-
-            <div class="col-md-4 text-center">
-              <button class="btn btn-primary py-3 px-5" type="button" onClick="">Undo</button>
-            </div>
 
             <div class="col-md-4 text-center">
               <a onclick="showData()" style="color: white;"  class="btn btn-primary py-3 px-5">Save</a>
