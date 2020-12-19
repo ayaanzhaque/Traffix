@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hexa &mdash; Free Website Template by Colorlib</title>
+    <title>Traffix - Visualize</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,10 +14,17 @@
     <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
 
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjWfWoYtAhvc6i9C4V5SekngUKeyXOYoc&callback=initMap"
+      defer
+    ></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/google-map.js"></script>
   </head>
   <body>
 
@@ -25,20 +32,20 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand " href="index.html">Traffix</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <right><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation"></right>
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarsExample05">
             <ul class="navbar-nav pl-md-5">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="government.html">Government</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="visualize.html">Visualize</a>
+                <a class="nav-link active" href="visualize.html">Visualize</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -52,12 +59,8 @@
                 <a class="nav-link" href="drivers.html">Drivers</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contracting.html">Contracting</a>
+                <a class="nav-link" href="contracting.html">Contractors</a>
               </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-              <li><a href="#" target="_blank" class="btn btn-primary px-3 py-2">Get Started</a></li>
             </ul>
 
           </div>
@@ -72,7 +75,7 @@
         <div class="container">
           <div class="row slider-text align-items-center justify-content-center">
             <div class="col-md-8 text-center col-sm-12 element-animate">
-              <h1>Projects</h1>
+              <h1>Visualize</h1>
               <p class="mb-5 sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>
             </div>
           </div>
@@ -82,59 +85,98 @@
     </section>
     <!-- END slider -->
 
+    <section class="section">
+      <div class="container">
+
+
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <h2 class=" heading mb-4">Your Map</h2>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <form action="#">
+          <div class="form-group">
+                  <textarea name="" id="forcedLatitude" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                </div>
+          <div class="form-group">
+                  <textarea name="" id="forcedLongitude" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                </div>
+          <div class="form-group">
+                  <textarea name="" id="forcedWeather" cols="30" rows="1" class="form-control" placeholder="Weather"></textarea>
+                </div>
+
+          <div class="form-group">
+                       <textarea name="" id="forcedSpeed" cols="30" rows="1" class="form-control" placeholder="Speed Limit"></textarea>
+              </div>
+          <div class="form-group">
+                      <textarea name="" id="roadSignsS" cols="30" rows="1" class="form-control" placeholder="Road Signs"></textarea>
+              </div>
+              <div class="form-group">
+                      <textarea name="" id="roadShapes" cols="30" rows="1" class="form-control" placeholder="Road Shape"></textarea>
+                    </div>
+           </div>
+        </form>
+          </div>
+
+          <div class="row justify-content-center mb-5 element-animate">
+            <div class="col-md-8 text-center">
+              <button class="btn btn-primary py-3 px-5" type="button" onClick="initMap();">Submit</button>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="container-fluid">
+          <div class="row justify-content-center mb-5 element-animate">
+            <div class="col-md-8 text-center">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+    </section>
 
 
 
     <!-- END section -->
 
-
-
     <footer class="site-footer" role="contentinfo">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4 mb-5">
-            <h3>About The Hexa Template</h3>
-            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.</p>
-            <ul class="list-unstyled footer-link d-flex footer-social">
-              <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
-              <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
-              <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
-              <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
-            </ul>
+            <h3>Traffix</h3>
+            <p class="mb-5">Using AI to promote smarter road infrastructure design.</p>
 
           </div>
           <div class="col-md-5 mb-5 pl-md-5">
             <h3>Contact Info</h3>
             <ul class="list-unstyled footer-link">
               <li class="d-block">
-                <span class="d-block">Address:</span>
-                <span class="text-white">34 Street Name, City Name Here, United States</span></li>
-              <li class="d-block"><span class="d-block">Telephone:</span><span class="text-white">+1 242 4942 290</span></li>
-              <li class="d-block"><span class="d-block">Email:</span><span class="text-white">info@yourdomain.com</span></li>
+                <span class="d-block">Ayaan Haque:</span>
+                <span class="text-white">ayaanzhaque@gmail.com</span></li>
+                <span class="d-block">Viraaj Reddi:</span>
+                <span class="text-white">viraajreddi@gmail.com</span></li>
+                <span class="d-block">Adithya Peruvemba:</span>
+                <span class="text-white">adtithya.peruvemba@gmail.com</span></li>
+                <span class="d-block">Ishaan Bhandari:</span>
+                <span class="text-white">ishaanbhandari0@gmail.com</span></li>
             </ul>
           </div>
           <div class="col-md-3 mb-5">
             <h3>Quick Links</h3>
             <ul class="list-unstyled footer-link">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Disclaimers</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="government.html">Government</a></li>
+              <li><a href="visualize.html">Visualize</a></li>
+              <li><a href="drivers.html">Drivers</a></li>
+              <li><a href="contracting.html">Contractors</a></li>
             </ul>
           </div>
           <div class="col-md-3">
 
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-md-center text-left">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                  aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
       </div>
@@ -150,5 +192,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/google-map.js"></script>
   </body>
 </html>
