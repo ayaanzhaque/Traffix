@@ -9852,7 +9852,7 @@ header .navbar .cta-btn a:hover {
   background-repeat: no-repeat;
   background-position: center center;
   height: calc(100vh - 217px);
-  min-height: 700px;
+  min-height: 800px;
   position: relative;
 }
 
