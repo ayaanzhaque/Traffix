@@ -1,6 +1,11 @@
+var presetLatArray = [40.5650, 40.2969, 40.2211];
+var presetLongArray = [-111.8390, -111.6946, -112.7444];
+var presetIconLibrary = ['./images/mapIcons/redOctagon.png', "./images/mapIcons/speedLimit.png", "./images/mapIcons/trafficLight.png"];
+
 var latArray = [];
 var longArray = [];
 var iconLibrary = [];
+
 var markersArray = [];
 
 function driverMap() {
@@ -67,8 +72,12 @@ function visualizeInit() {
         center: givenCenter
       });
 
+      for (i = 0; i < presetLatArray.length; i++) {
+      presetMarker(presetLatArray[i], presetLongArray[i], map, contentString, presetIconLibrary[i], i);
+      }
+
       for (i = 0; i < latArray.length; i++) {
-      placeMarker(latArray[i], longArray[i], map, contentString, iconLibrary[i], i);
+      placeMarker(latArray[i], longArray[i], map, "", iconLibrary[i], i);
       }
 
 }
@@ -89,7 +98,7 @@ function placeMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt
         });
 
         marker.addListener('click', function() {
-          marker.setDraggable(false);
+          infowindow.open(map, marker);
         });
 
         marker.addListener('rightclick', function(event) {
@@ -97,12 +106,42 @@ function placeMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt
         });
 
 
-      marker.addListener('dragend', function(evt){
-        latArray[givenInt] = evt.latlng.lat().toFixed(3)
-        longArray[givenInt] = evt.latLng.lng().toFixed(3)
-});
-
 markersArray.push(marker);
+
+}
+
+function presetMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt) {
+
+        var infowindow = new google.maps.InfoWindow({
+          content: givenContent
+        });
+
+        var marker = new google.maps.Marker({
+            position: {lat: givenLat, lng: givenLong},
+            map: map,
+            title: 'GIVEEEEN MEEEAAAPP',
+            icon: givenIcon,
+            draggable:false
+        });
+
+        marker.addListener('click', function() {
+          if (givenIcon == './images/mapIcons/redOctagon.png') {
+
+            marker.setIcon("./images/mapIcons/speedLimit.png");
+            givenIcon = "./images/mapIcons/speedLimit.png"
+
+          } else if (givenIcon == "./images/mapIcons/speedLimit.png") {
+
+            marker.setIcon("./images/mapIcons/trafficLight.png");
+            givenIcon = "./images/mapIcons/trafficLight.png"
+
+          } else if (givenIcon == "./images/mapIcons/trafficLight.png") {
+
+            marker.setIcon("./images/mapIcons/redOctagon.png");
+            givenIcon = "./images/mapIcons/redOctagon.png"
+          }
+
+        });
 
 }
 
