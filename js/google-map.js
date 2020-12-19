@@ -40,6 +40,10 @@ var iconLibrary = [];
 
 var markersArray = [];
 
+function driverMap() {
+  //input geocoding stuff here after finished with other map
+
+}
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
@@ -47,25 +51,33 @@ var markersArray = [];
 function visualizeInit() {
 
 
-    var stopLat = parseInt(document.getElementById("stopLat").value);
-    var stopLong = parseInt(document.getElementById("stopLong").value);
+    var stopLat = parseFloat(document.getElementById("stopLat").value);
+    var stopLong = parseFloat(document.getElementById("stopLong").value);
 
-    var speedLat = parseInt(document.getElementById("speedLat").value);
-    var speedLong = parseInt(document.getElementById("speedLong").value);
+    var speedLat = parseFloat(document.getElementById("speedLat").value);
+    var speedLong = parseFloat(document.getElementById("speedLong").value);
 
-    var lightLat = parseInt(document.getElementById("lightLat").value);
-    var lightLong = parseInt(document.getElementById("lightLong").value);
+    var lightLat = parseFloat(document.getElementById("lightLat").value);
+    var lightLong = parseFloat(document.getElementById("lightLong").value);
 
-    var yieldLat = parseInt(document.getElementById("yieldLat").value);
-    var yieldLong = parseInt(document.getElementById("yieldLong").value);
+    var yieldLat = parseFloat(document.getElementById("yieldLat").value);
+    var yieldLong = parseFloat(document.getElementById("yieldLong").value);
 
-//add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
-    var givenFlow = [];
-    var givenSpeed = [];
-    var givenDensity = [];
-    var givenWait = [];
-    var givenTravel = [];
 
+    /*
+    var weather = document.getElementById("forcedWeather").value;
+    var speedLimit = document.getElementById("forcedSpeed").value;
+    var roadSigns = document.getElementById("roadSignsS").value;
+    var roadShape = document.getElementById("roadShapes").value;*/
+
+
+
+
+    var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<div id="bodyContent">'+
+                '</div>';
 
     if (document.getElementById("stopLat").value != "") {
       latArray.push(stopLat);
@@ -101,32 +113,30 @@ function visualizeInit() {
       });
 
       for (i = 0; i < presetLatArray.length; i++) {
-      presetMarker(presetLatArray[i], presetLongArray[i], map, presetIconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
+      presetMarker(presetLatArray[i], presetLongArray[i], map, contentString, presetIconLibrary[i], i);
       }
 
       for (i = 0; i < latArray.length; i++) {
-      placeMarker(latArray[i], longArray[i], map, iconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
+      placeMarker(latArray[i], longArray[i], map, "", iconLibrary[i], i);
       }
+
+
+      document.getElementById('stopLat').value = '';
+      document.getElementById('stopLong').value = '';
+      document.getElementById('speedLat').value = '';
+      document.getElementById('speedLong').value = '';
+      document.getElementById('lightLat').value = '';
+      document.getElementById('lightLong').value = '';
+      document.getElementById('yieldLat').value = '';
+      document.getElementById('yieldLong').value = '';
 
 }
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
-function placeMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt, givenFlow, givenSpeed, givenDensity, givenWait, givenTravel) {
-
-  var contentString1 = '<div id="content">'+
-  '<div id="siteNotice">'+
-  '</div>'+
-  '<div id="bodyContent">'+
-  '<p><b>Change in Rates of Flow: </b>' + givenFlow+ '</p>' +
-  '<p><b>Change in Average Speed: </b>'+ givenSpeed + '</p>' +
-  '<p><b>Change in Vehicle Density: </b>'+ givenDensity + '</p>' +
-  '<p><b>Change in Intersection Wait Times: </b>' + givenWait + '</p>' +
-  '<p><b>Change in Average Time of Travel: </b>' + givenTravel + '</p>' +
-'</div>' +
-  '</div>';
+function placeMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt) {
 
         var infowindow = new google.maps.InfoWindow({
-          content: contentString1
+          content: givenContent
         });
 
         var marker = new google.maps.Marker({
@@ -150,38 +160,21 @@ markersArray.push(marker);
 
 }
 
-function presetMarker(givenLat, givenLong, map, givenIcon, givenInt, givenFlow, givenSpeed, givenDensity, givenWait, givenTravel) {
-
-  var contentString1 = '<div id="content">'+
-  '<div id="siteNotice">'+
-  '</div>'+
-  '<div id="bodyContent">'+
-  '<p><b>Change in Rates of Flow: </b>' + givenFlow+ '</p>' +
-  '<p><b>Change in Average Speed: </b>'+ givenSpeed + '</p>' +
-  '<p><b>Change in Vehicle Density: </b>'+ givenDensity + '</p>' +
-  '<p><b>Change in Intersection Wait Times: </b>' + givenWait + '</p>' +
-  '<p><b>Change in Average Time of Travel: </b>' + givenTravel+ '</p>'
-'</div>'+
-  '</div>';
-
+function presetMarker(givenLat, givenLong, map, givenContent, givenIcon, givenInt) {
 
         var infowindow = new google.maps.InfoWindow({
-          content: contentString1
+          content: givenContent
         });
 
         var marker = new google.maps.Marker({
             position: {lat: givenLat, lng: givenLong},
             map: map,
-            title: 'mappeth',
+            title: 'GIVEEEEN MEEEAAAPP',
             icon: givenIcon,
             draggable:false
         });
 
         marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-
-        marker.addListener('rightclick', function() {
           if (givenIcon == './images/mapIcons/redOctagon.png') {
 
             marker.setIcon("./images/mapIcons/yeild.png");
