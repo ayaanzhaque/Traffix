@@ -1,5 +1,5 @@
-var presetLatArray = [40.5650, 40.2969, 40.2211];
-var presetLongArray = [-111.8390, -111.6946, -112.7444];
+var presetLatArray = [40.2969, 40.2211];
+var presetLongArray = [-111.6946, -112.7444];
 var presetIconLibrary = ['./images/mapIcons/redOctagon.png', "./images/mapIcons/speedLimit.png", "./images/mapIcons/trafficLight.png"];
 
 var latArray = [];
@@ -27,6 +27,10 @@ function visualizeInit() {
 
     var lightLat = parseInt(document.getElementById("lightLat").value);
     var lightLong = parseInt(document.getElementById("lightLong").value);
+
+    var yieldLat = parseInt(document.getElementById("yieldLat").value);
+    var yieldLong = parseInt(document.getElementById("yieldLong").value);
+
 
     /*
     var weather = document.getElementById("forcedWeather").value;
@@ -57,6 +61,10 @@ function visualizeInit() {
       latArray.push(lightLat);
       longArray.push(lightLong);
       iconLibrary.push("./images/mapIcons/trafficLight.png");
+    } else if (document.getElementById("yieldLat").value != "") {
+      latArray.push(yieldLat);
+      longArray.push(yieldLong);
+      iconLibrary.push("./images/mapIcons/yeild.png");
     }
 
 
@@ -127,18 +135,18 @@ function presetMarker(givenLat, givenLong, map, givenContent, givenIcon, givenIn
         marker.addListener('click', function() {
           if (givenIcon == './images/mapIcons/redOctagon.png') {
 
-            marker.setIcon("./images/mapIcons/speedLimit.png");
-            givenIcon = "./images/mapIcons/speedLimit.png"
+            marker.setIcon("./images/mapIcons/yeild.png");
+            givenIcon = "./images/mapIcons/yeild.png";
 
-          } else if (givenIcon == "./images/mapIcons/speedLimit.png") {
+          } else if (givenIcon == "./images/mapIcons/yeild.png") {
 
             marker.setIcon("./images/mapIcons/trafficLight.png");
-            givenIcon = "./images/mapIcons/trafficLight.png"
+            givenIcon = "./images/mapIcons/trafficLight.png";
 
           } else if (givenIcon == "./images/mapIcons/trafficLight.png") {
 
             marker.setIcon("./images/mapIcons/redOctagon.png");
-            givenIcon = "./images/mapIcons/redOctagon.png"
+            givenIcon = "./images/mapIcons/redOctagon.png";
           }
 
         });
