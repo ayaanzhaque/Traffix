@@ -76,7 +76,8 @@
           <div class="row slider-text align-items-center justify-content-center">
             <div class="col-md-8 text-center col-sm-12 element-animate">
               <h1>Visualize</h1>
-              <p class="mb-5 sub-text">Experiment and Envision your proposals for road infrastructure changes and see how they will improve traffic flow</p>
+              <p class="mb-5 sub-text">Envision your proposals for road infrastructure changes by experimenting with our interactive map, which will depict how
+                traffic flow is improved. </p>
             </div>
           </div>
         </div>
@@ -204,29 +205,29 @@
           </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container">
           <div class="row justify-content-center mb-5 element-animate">
-            <div class="col-md-8 text-center">
-              <a onclick="showData()"  class="btn btn-primary py-3 px-5">Save</a>
-              <script>
 
-              </script>
+            <div class="col-md-4 text-center">
+              <button class="btn btn-primary py-3 px-5" type="button" onClick="">Undo</button>
             </div>
+
+            <div class="col-md-4 text-center">
+              <a onclick="showData()" style="color: white;"  class="btn btn-primary py-3 px-5">Save</a>
+            </div>
+
+            <div class="col-md-4 text-center">
+              <button class="btn btn-primary py-3 px-5" type="button" onClick="deleteMarkers();">Reset</button>
+            </div>
+
           </div>
         </div>
     </section>
-    <script>
-    function showData() {
 
-
-    document.getElementById("submission").style.display = "block";
-  }
-
-    </script>
   <div id = "submission" style = "display: none">
     <div class="container">
       <div class="row justify-content-center mb-5">
-        <div class="col-md-7 text-center heading-section ftco-animate">
+        <div class="col-md-8 text-center heading-section ftco-animate">
           <h2 class="mb-4">Your Proposal</h2>
           <p>Here are summarized statistics about your proposed adjustments. On the left are the statistic you already have seen related to traffic improvements. On the right are cost predictions of your proposal.</p>
         </div>
@@ -345,6 +346,12 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+}
+</script>
+
+<script>
+function showData() {
+document.getElementById("submission").style.display = "block";
 }
 </script>
   </body>
