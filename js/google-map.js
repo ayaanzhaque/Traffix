@@ -1,5 +1,3 @@
-import Geocoding from 'radar.js';
-
 var presetLatArray = [
   33.771277,
   33.763901,
@@ -75,8 +73,6 @@ function radarDistance(origin, destination) {
 
 
 function visualizeInit() {
-
-
 
     var stopStreet = document.getElementById("stopStreet").value;
     var stopCity = document.getElementById("stopCity").value;
