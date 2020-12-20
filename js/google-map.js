@@ -47,32 +47,27 @@ var c = [];
 var markersArray = [];
 var flightPathArray = [];
 
-var final_distances = [];
-
-function Geocoding(userAddress) {
-  radarIOGeocode = geocode();
-  return radarIOGeocode(userAddress);
-}
-
-function radarDistance(origin, destination) {
-  Radar.getDistance({
-    origin: origin,
-    destination: destination,
-    modes: [
-      'car'
-    ],
-    units: 'imperial'
-  }).then((result) => {
-    final_distances.push(results);
-  }).catch((err) => {
-    alert("Error with radar distances.");
-  });
-}
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
 
 function visualizeInit() {
+
+  const given_geocoder = new google.maps.Geocoder();
+  function geocodeAddress(geocoder, address) {
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+
+        latArray.push(parseFloat(results[0].geometry.location.lat()));
+        longArray.push(parseFloat(results[0].geometry.location.lng()));
+        //alert(latArray);
+      } else {
+        alert(
+          "Geocode was not successful for the following reason: " + status
+        );
+      }
+    });
+  }
 
     var stopStreet = document.getElementById("stopStreet").value;
     var stopCity = document.getElementById("stopCity").value;
@@ -105,7 +100,6 @@ function visualizeInit() {
     var laneEndLong = parseFloat(document.getElementById("laneEndLong").value);
 
 
-
 //add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
     var givenFlow = [];
     var givenSpeed = [];
@@ -113,21 +107,6 @@ function visualizeInit() {
     var givenWait = [];
     var givenTravel = [];
 
-    const given_geocoder = new google.maps.Geocoder();
-    function geocodeAddress(geocoder, address) {
-      geocoder.geocode({ address: address }, (results, status) => {
-        if (status === "OK") {
-
-          latArray.push(parseFloat(results[0].geometry.location.lat()));
-          longArray.push(parseFloat(results[0].geometry.location.lng()));
-          //alert(latArray);
-        } else {
-          alert(
-            "Geocode was not successful for the following reason: " + status
-          );
-        }
-      });
-    }
 
     if (document.getElementById("stopStreet").value != "") {
       geocodeAddress(given_geocoder, stopAddress);
@@ -151,8 +130,6 @@ function visualizeInit() {
       laneLong.push(latStartLong);
       laneLat.push(laneEndLat);
       laneLong.push(laneEndLong);
-
-      radarDistance({lat: laneStartLat, lng: laneStartLong}, {lat: laneEndLat, lng: laneEndLong})
 
     }
 
