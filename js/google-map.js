@@ -38,10 +38,6 @@ var presetIconLibrary = [traffic, traffic, traffic, traffic, traffic, stop, stop
 var latArray = [];
 var longArray = [];
 var iconLibrary = [];
-var markerArray = [];
-
-var tempLat; 
-var tempLong; 
 
 
 var laneLat = [];
@@ -51,9 +47,6 @@ var c = [];
 var markersArray = [];
 var flightPathArray = [];
 
-var final_results = [];
-
-//__________________________________________________
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
@@ -61,74 +54,43 @@ var final_results = [];
 function visualizeInit() {
 
   const given_geocoder = new google.maps.Geocoder();
-var user_address = "19301 Harleigh Drive, Saratoga, CA 95070";
+  function geocodeAddress(geocoder, address) {
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+  
+        latArray.push(parseFloat(results[0].geometry.location.lat()));
+        longArray.push(parseFloat(results[0].geometry.location.lng()));
+        //alert(latArray);
+      } else {
+        alert(
+          "Geocode was not successful for the following reason: " + status
+        );
+      }
+    });
+  }
 
-function geocodeAddress(geocoder, address) {
-  geocoder.geocode({ address: address }, (results, status) => {
-    if (status === "OK") {
+    var stopStreet = document.getElementById("stopStreet").value;
+    var stopCity = document.getElementById("stopCity").value;
+    var stopState = document.getElementById("stopState").value;
+    var stopZIP = document.getElementById("stopZIP").value;
+    var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP; 
 
-      latArray.push(parseFloat(results[0].geometry.location.lat()));
-      longArray.push(parseFloat(results[0].geometry.location.lng()));
-      //alert(latArray);
-    } else {
-      alert(
-        "Geocode was not successful for the following reason: " + status
-      );
-    }
-  });
-}
+    var stopLat = parseFloat(document.getElementById("stopLat").value);
+    var stopLong = parseFloat(document.getElementById("stopLong").value);
 
-function geocodeLaneAddress(geocoder, address) {
-  geocoder.geocode({ address: address }, (results, status) => {
-    if (status === "OK") {
+    var speedLat = parseFloat(document.getElementById("speedLat").value);
+    var speedLong = parseFloat(document.getElementById("speedLong").value);
 
-      laneLat.push(parseFloat(results[0].geometry.location.lat()));
-      laneLong.push(parseFloat(results[0].geometry.location.lng()));
-      //alert(laneLat);
-    } else {
-      alert(
-        "Geocode was not successful for the following reason: " + status
-      );
-    }
-  });
-}
+    var lightLat = parseFloat(document.getElementById("lightLat").value);
+    var lightLong = parseFloat(document.getElementById("lightLong").value);
 
+    var yieldLat = parseFloat(document.getElementById("yieldLat").value);
+    var yieldLong = parseFloat(document.getElementById("yieldLong").value);
 
-var stopStreet = document.getElementById("stopStreet").value;
-var stopCity = document.getElementById("stopCity").value;
-var stopState = document.getElementById("stopState").value;
-var stopZIP = document.getElementById("stopZIP").value;
-var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP; 
-
-var speedStreet = document.getElementById("speedStreet").value;
-var speedCity = document.getElementById("speedCity").value;
-var speedState = document.getElementById("speedState").value;
-var speedZIP = document.getElementById("speedZIP").value;
-var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP; 
-
-var lightStreet = document.getElementById("lightStreet").value;
-var lightCity = document.getElementById("lightCity").value;
-var lightState = document.getElementById("lightState").value;
-var lightZIP = document.getElementById("lightZIP").value;
-var lightAddress = lightStreet + ", " + lightCity + ", " + lightState + " " + lightZIP; 
-
-var yieldStreet = document.getElementById("yieldStreet").value;
-var yieldCity = document.getElementById("yieldCity").value;
-var yieldState = document.getElementById("yieldState").value;
-var yieldZIP = document.getElementById("yieldZIP").value;
-var yieldAddress = yieldStreet + ", " + yieldCity + ", " + yieldState + " " + yieldZIP; 
-
-var laneStreetStart = document.getElementById("laneStreetStart").value;
-var laneCityStart = document.getElementById("laneCityStart").value;
-var laneStateStart = document.getElementById("laneStateStart").value;
-var laneZIPStart = document.getElementById("laneZIPStart").value;
-var laneAddressStart = laneStreetStart + ", " + laneCityStart + ", " + laneStateStart + " " + laneZIPStart;
-
-var laneStreetEnd = document.getElementById("laneStreetEnd").value;
-var laneCityEnd = document.getElementById("laneCityEnd").value;
-var laneStateEnd = document.getElementById("laneStateEnd").value;
-var laneZIPEnd = document.getElementById("laneZIPEnd").value;
-var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + " " + laneZIPEnd;
+    var laneStartLat = parseFloat(document.getElementById("laneStartLat").value);
+    var latStartLong = parseFloat(document.getElementById("latStartLong").value);
+    var laneEndLat = parseFloat(document.getElementById("laneEndLat").value);
+    var laneEndLong = parseFloat(document.getElementById("laneEndLong").value);
 
 
 //add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
@@ -138,28 +100,30 @@ var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + 
     var givenWait = [];
     var givenTravel = [];
 
-    var user_address = "19301 Harleigh Drive, Saratoga, CA 95070";
 
     if (document.getElementById("stopStreet").value != "") {
       geocodeAddress(given_geocoder, stopAddress);
       iconLibrary.push(stop);
 
-    } else if (document.getElementById("speedStreet").value != "") {
-      geocodeAddress(given_geocoder, speedAddress);
+    } else if (document.getElementById("speedLat").value != "") {
+      latArray.push(speedLat);
+      longArray.push(speedLong);
       iconLibrary.push(speed);
 
-    } else if (document.getElementById("lightStreet").value != "") {
-      geocodeAddress(given_geocoder, lightAddress);
+    } else if (document.getElementById("lightLat").value != "") {
+      latArray.push(lightLat);
+      longArray.push(lightLong);
       iconLibrary.push(traffic);
-
-    } else if (document.getElementById("yieldStreet").value != "") {
-      geocodeAddress(given_geocoder, yieldAddress);
+    } else if (document.getElementById("yieldLat").value != "") {
+      latArray.push(yieldLat);
+      longArray.push(yieldLong);
       iconLibrary.push("./images/mapIcons/yeild.png");
+    } else if (document.getElementById("laneEndLong").value != '') {
 
-    } else if (document.getElementById("laneStreetEnd").value != '') {
-
-      geocodeLaneAddress(geocoder, laneAddressStart);
-      geocodeLaneAddress(geocoder, laneAddressEnd);
+      laneLat.push(laneStartLat);
+      laneLong.push(latStartLong);
+      laneLat.push(laneEndLat);
+      laneLong.push(laneEndLong);
 
     }
 
@@ -176,11 +140,11 @@ var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + 
       presetMarker(presetLatArray[i], presetLongArray[i], map, presetIconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
-      for (i = 0; i < latArray.length + 1; i++) {
+      for (i = 0; i < latArray.length; i++) {
       placeMarker(latArray[i], longArray[i], map, iconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
-      for (var i = 0; i < laneLat.length + 1; i+=2 ) {
+      for (var i = 0; i < laneLat.length; i+=2 ) {
 
         placeMarker(laneLat[i], laneLong[i], map, "", i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
 
@@ -225,6 +189,10 @@ var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + 
       document.getElementById("laneEndLat").value = '';
       document.getElementById("laneEndLong").value = '';
 
+      document.getElementById("stopStreet").value = '';
+      document.getElementById("stopCity").value = '';
+      document.getElementById("stopState").value = '';
+      document.getElementById("stopZIP").value = '';
 
 }
 //_____________________________________________________________________________________________________________________________________________________________________________________________
