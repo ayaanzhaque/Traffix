@@ -66,7 +66,6 @@ var user_address = "19301 Harleigh Drive, Saratoga, CA 95070";
 function geocodeAddress(geocoder, address) {
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === "OK") {
-      return results[0].geometry.location;
 
       latArray.push(parseFloat(results[0].geometry.location.lat()));
       longArray.push(parseFloat(results[0].geometry.location.lng()));
