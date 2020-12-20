@@ -1,3 +1,5 @@
+import Geocoding from 'radar.js';
+
 var presetLatArray = [
   33.771277,
   33.763901,
@@ -47,39 +49,46 @@ var c = [];
 var markersArray = [];
 var flightPathArray = [];
 
+var final_distances = [];
+
+function Geocoding(userAddress) {
+  radarIOGeocode = geocode();
+  return radarIOGeocode(userAddress);
+}
+
+function radarDistance(origin, destination) {
+  Radar.getDistance({
+    origin: origin,
+    destination: destination,
+    modes: [
+      'car'
+    ],
+    units: 'imperial'
+  }).then((result) => {
+    final_distances.push(results);
+  }).catch((err) => {
+    alert("Error with radar distances.");
+  });
+}
 
 //_____________________________________________________________________________________________________________________________________________________________________________________________
 
 
 function visualizeInit() {
 
-  const given_geocoder = new google.maps.Geocoder();
-  function geocodeAddress(geocoder, address) {
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status === "OK") {
-  
-        latArray.push(parseFloat(results[0].geometry.location.lat()));
-        longArray.push(parseFloat(results[0].geometry.location.lng()));
-        //alert(latArray);
-      } else {
-        alert(
-          "Geocode was not successful for the following reason: " + status
-        );
-      }
-    });
-  }
+
 
     var stopStreet = document.getElementById("stopStreet").value;
     var stopCity = document.getElementById("stopCity").value;
     var stopState = document.getElementById("stopState").value;
     var stopZIP = document.getElementById("stopZIP").value;
-    var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP; 
+    var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP;
 
     var speedStreet = document.getElementById("speedStreet").value;
     var speedCity = document.getElementById("speedCity").value;
     var speedState = document.getElementById("speedState").value;
     var speedZIP = document.getElementById("speedZIP").value;
-    var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP; 
+    var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP;
 
 
     var stopLat = parseFloat(document.getElementById("stopLat").value);
@@ -100,6 +109,7 @@ function visualizeInit() {
     var laneEndLong = parseFloat(document.getElementById("laneEndLong").value);
 
 
+
 //add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
     var givenFlow = [];
     var givenSpeed = [];
@@ -107,6 +117,21 @@ function visualizeInit() {
     var givenWait = [];
     var givenTravel = [];
 
+    const given_geocoder = new google.maps.Geocoder();
+    function geocodeAddress(geocoder, address) {
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+
+          latArray.push(parseFloat(results[0].geometry.location.lat()));
+          longArray.push(parseFloat(results[0].geometry.location.lng()));
+          //alert(latArray);
+        } else {
+          alert(
+            "Geocode was not successful for the following reason: " + status
+          );
+        }
+      });
+    }
 
     if (document.getElementById("stopStreet").value != "") {
       geocodeAddress(given_geocoder, stopAddress);
@@ -130,6 +155,8 @@ function visualizeInit() {
       laneLong.push(latStartLong);
       laneLat.push(laneEndLat);
       laneLong.push(laneEndLong);
+
+      radarDistance({lat: laneStartLat, lng: laneStartLong}, {lat: laneEndLat, lng: laneEndLong})
 
     }
 
