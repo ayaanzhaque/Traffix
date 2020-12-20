@@ -40,6 +40,9 @@ var longArray = [];
 var iconLibrary = [];
 var markerArray = [];
 
+var tempLat; 
+var tempLong; 
+
 
 var laneLat = [];
 var laneLong = [];
@@ -64,6 +67,10 @@ function geocodeAddress(geocoder, address) {
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === "OK") {
       return results[0].geometry.location;
+
+      latArray.push(parseFloat(results[0].geometry.location.lat()));
+      longArray.push(parseFloat(results[0].geometry.location.lng()));
+      alert(latArray);
     } else {
       alert(
         "Geocode was not successful for the following reason: " + status
@@ -72,22 +79,57 @@ function geocodeAddress(geocoder, address) {
   });
 }
 
-    var stopLat = parseFloat(document.getElementById("stopLat").value);
-    var stopLong = parseFloat(document.getElementById("stopLong").value);
+function geocodeLaneAddress(geocoder, address) {
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
 
-    var speedLat = parseFloat(document.getElementById("speedLat").value);
-    var speedLong = parseFloat(document.getElementById("speedLong").value);
+      laneLat.push(parseFloat(results[0].geometry.location.lat()));
+      laneLong.push(parseFloat(results[0].geometry.location.lng()));
+      alert(latArray);
+    } else {
+      alert(
+        "Geocode was not successful for the following reason: " + status
+      );
+    }
+  });
+}
 
-    var lightLat = parseFloat(document.getElementById("lightLat").value);
-    var lightLong = parseFloat(document.getElementById("lightLong").value);
 
-    var yieldLat = parseFloat(document.getElementById("yieldLat").value);
-    var yieldLong = parseFloat(document.getElementById("yieldLong").value);
+var stopStreet = document.getElementById("stopLat").value;
+var stopCity = document.getElementById("stopLat").value;
+var stopState = document.getElementById("stopLat").value;
+var stopZIP = document.getElementById("stopLat").value;
+var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP; 
 
-    var laneStartLat = parseFloat(document.getElementById("laneStartLat").value);
-    var latStartLong = parseFloat(document.getElementById("latStartLong").value);
-    var laneEndLat = parseFloat(document.getElementById("laneEndLat").value);
-    var laneEndLong = parseFloat(document.getElementById("laneEndLong").value);
+var speedStreet = document.getElementById("stopLat").value;
+var speedCity = document.getElementById("stopLat").value;
+var speedState = document.getElementById("stopLat").value;
+var speedZIP = document.getElementById("stopLat").value;
+var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP; 
+
+var lightStreet = document.getElementById("stopLat").value;
+var lightCity = document.getElementById("stopLat").value;
+var lightState = document.getElementById("stopLat").value;
+var lightZIP = document.getElementById("stopLat").value;
+var lightAddress = lightStreet + ", " + lightCity + ", " + lightState + " " + lightZIP; 
+
+var yieldStreet = document.getElementById("stopLat").value;
+var yieldCity = document.getElementById("stopLat").value;
+var yieldState = document.getElementById("stopLat").value;
+var yieldZIP = document.getElementById("stopLat").value;
+var yieldAddress = yieldStreet + ", " + yieldCity + ", " + yieldState + " " + yieldZIP; 
+
+var laneStreetStart = document.getElementById("stopLat").value;
+var laneCityStart = document.getElementById("stopLat").value;
+var laneStateStart = document.getElementById("stopLat").value;
+var laneZIPStart = document.getElementById("stopLat").value;
+var laneAddressStart = laneStreetStart + ", " + laneCityStart + ", " + laneStateStart + " " + laneZIPStart;
+
+var laneStreetEnd = document.getElementById("stopLat").value;
+var laneCityEnd = document.getElementById("stopLat").value;
+var laneStateEnd = document.getElementById("stopLat").value;
+var laneZIPEnd = document.getElementById("stopLat").value;
+var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + " " + laneZIPEnd;
 
 
 //add all info for the infowindows in these 5 arrays below _____________________________________________________________________________________________________________________________________
@@ -99,32 +141,26 @@ function geocodeAddress(geocoder, address) {
 
     var user_address = "19301 Harleigh Drive, Saratoga, CA 95070";
 
-    if (document.getElementById("stopLat").value != "") {
-
-      user_results = geocodeAddress(given_geocoder, user_address);
-      latArray.push(user_results['lat']);
-      longArray.push(user_results['lng']);
+    if (document.getElementById("stopStreet").value != "") {
+      geocodeAddress(given_geocoder, stopAddress);
       iconLibrary.push(stop);
 
-    } else if (document.getElementById("speedLat").value != "") {
-      latArray.push(speedLat);
-      longArray.push(speedLong);
+    } else if (document.getElementById("speedStreet").value != "") {
+      geocodeAddress(given_geocoder, speedAddress);
       iconLibrary.push(speed);
 
-    } else if (document.getElementById("lightLat").value != "") {
-      latArray.push(lightLat);
-      longArray.push(lightLong);
+    } else if (document.getElementById("lightStreet").value != "") {
+      geocodeAddress(given_geocoder, lightAddress);
       iconLibrary.push(traffic);
-    } else if (document.getElementById("yieldLat").value != "") {
-      latArray.push(yieldLat);
-      longArray.push(yieldLong);
-      iconLibrary.push("./images/mapIcons/yeild.png");
-    } else if (document.getElementById("laneEndLong").value != '') {
 
-      laneLat.push(laneStartLat);
-      laneLong.push(latStartLong);
-      laneLat.push(laneEndLat);
-      laneLong.push(laneEndLong);
+    } else if (document.getElementById("yieldStreet").value != "") {
+      geocodeAddress(given_geocoder, yieldAddress);
+      iconLibrary.push("./images/mapIcons/yeild.png");
+
+    } else if (document.getElementById("laneStreetEnd").value != '') {
+
+      geocodeLaneAddress(geocoder, laneAddressStart);
+      geocodeLaneAddress(geocoder, laneAddressEnd);
 
     }
 

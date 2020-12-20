@@ -37,20 +37,13 @@
       }
     </style>
     <script>
-      var final_results = [];
+
       function geocodeAddress(geocoder, resultsMap) {
         const address = document.getElementById("address").value;
         geocoder.geocode({ address: address }, (results, status) => {
           if (status === "OK") {
-
-            final_results = results;
-
-            /*resultsMap.setCenter(results[0].geometry.location);
-            new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location,
-            });*/
-
+            var final_results = results[0].geometry.location;
+            alert(parseFloat(results[0].geometry.location.lat()));
           } else {
             alert(
               "Geocode was not successful for the following reason: " + status
