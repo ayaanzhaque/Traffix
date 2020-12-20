@@ -81,6 +81,18 @@ function visualizeInit() {
     var speedZIP = document.getElementById("speedZIP").value;
     var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP;
 
+    var lightStreet = document.getElementById("lightStreet").value;
+    var lightCity = document.getElementById("lightCity").value;
+    var lightState = document.getElementById("lightState").value;
+    var lightZIP = document.getElementById("lightZIP").value;
+    var lightAddress = lightStreet + ", " + lightCity + ", " + lightState + " " + lightZIP; 
+
+    var yieldStreet = document.getElementById("yieldStreet").value;
+    var yieldCity = document.getElementById("yieldCity").value;
+    var yieldState = document.getElementById("yieldState").value;
+var yieldZIP = document.getElementById("yieldZIP").value;
+var yieldAddress = yieldStreet + ", " + yieldCity + ", " + yieldState + " " + yieldZIP; 
+
 
     var stopLat = parseFloat(document.getElementById("stopLat").value);
     var stopLong = parseFloat(document.getElementById("stopLong").value);
@@ -116,14 +128,14 @@ function visualizeInit() {
       geocodeAddress(given_geocoder, speedAddress);
       iconLibrary.push(speed);
 
-    } else if (document.getElementById("lightLat").value != "") {
-      latArray.push(lightLat);
-      longArray.push(lightLong);
+    } else if (document.getElementById("lightStreet").value != "") {
+      geocodeAddress(given_geocoder, lightAddress);
       iconLibrary.push(traffic);
-    } else if (document.getElementById("yieldLat").value != "") {
-      latArray.push(yieldLat);
-      longArray.push(yieldLong);
+
+    } else if (document.getElementById("yieldStreet").value != "") {
+      geocodeAddress(given_geocoder, yieldAddress);
       iconLibrary.push("./images/mapIcons/yeild.png");
+
     } else if (document.getElementById("laneEndLong").value != '') {
 
       laneLat.push(laneStartLat);
@@ -131,6 +143,25 @@ function visualizeInit() {
       laneLat.push(laneEndLat);
       laneLong.push(laneEndLong);
 
+    } else if (document.getElementById("stopLat").value != "") {
+      latArray.push(stopLat);
+      longArray.push(stopLong);
+      iconLibrary.push(stop);
+
+    } else if (document.getElementById("speedLat").value != "") {
+      latArray.push(speedLat);
+      longArray.push(speedLong);
+      iconLibrary.push(speed);
+      
+    } else if (document.getElementById("lightLat").value != "") {
+      latArray.push(lightLat);
+      longArray.push(lightLong);
+      iconLibrary.push("./images/mapIcons/trafficLight.png");
+
+    } else if (document.getElementById("yieldLat").value != "") {
+      latArray.push(yieldLat);
+      longArray.push(yieldLong);
+      iconLibrary.push("./images/mapIcons/yeild.png");
     }
 
 
@@ -199,6 +230,30 @@ function visualizeInit() {
       document.getElementById("stopCity").value = '';
       document.getElementById("stopState").value = '';
       document.getElementById("stopZIP").value = '';
+
+      document.getElementById("stopStreet").value = '';
+      document.getElementById("stopCity").value = '';
+      document.getElementById("stopState").value = '';
+      document.getElementById("stopZIP").value = '';
+      stopAddress = '';
+
+    document.getElementById("speedStreet").value = '';
+    document.getElementById("speedCity").value = '';
+    document.getElementById("speedState").value = '';
+    document.getElementById("speedZIP").value = '';
+    speedAddress = '';
+
+    document.getElementById("lightStreet").value = '';
+    document.getElementById("lightCity").value = '';
+    document.getElementById("lightState").value = '';
+    document.getElementById("lightZIP").value = '';
+    lightAddress = ''; 
+
+    document.getElementById("yieldStreet").value = '';
+    document.getElementById("yieldCity").value = '';
+    document.getElementById("yieldState").value = '';
+    document.getElementById("yieldZIP").value = '';
+    yieldAddress = ''; 
 
 }
 //_____________________________________________________________________________________________________________________________________________________________________________________________
