@@ -75,6 +75,13 @@ function visualizeInit() {
     var stopZIP = document.getElementById("stopZIP").value;
     var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP; 
 
+    var speedStreet = document.getElementById("speedStreet").value;
+    var speedCity = document.getElementById("speedCity").value;
+    var speedState = document.getElementById("speedState").value;
+    var speedZIP = document.getElementById("speedZIP").value;
+    var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP; 
+
+
     var stopLat = parseFloat(document.getElementById("stopLat").value);
     var stopLong = parseFloat(document.getElementById("stopLong").value);
 
@@ -105,9 +112,8 @@ function visualizeInit() {
       geocodeAddress(given_geocoder, stopAddress);
       iconLibrary.push(stop);
 
-    } else if (document.getElementById("speedLat").value != "") {
-      latArray.push(speedLat);
-      longArray.push(speedLong);
+    } else if (document.getElementById("speedStreet").value != "") {
+      geocodeAddress(given_geocoder, speedAddress);
       iconLibrary.push(speed);
 
     } else if (document.getElementById("lightLat").value != "") {
