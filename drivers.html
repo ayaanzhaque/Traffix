@@ -150,9 +150,6 @@
                       <textarea name="" id="name" cols="30" rows="1" class="form-control" placeholder="Name"></textarea>
                     </div>
               <div class="form-group">
-                      <textarea name="" id="city" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
-                    </div>
-              <div class="form-group">
                       <textarea name="" id="address" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
                     </div>
 
@@ -181,17 +178,12 @@
               <script>
               function beastfunction2(){
               var name = document.getElementById("name").value;
-              var email = document.getElementById("city").value;
               var edesc = document.getElementById("address").value;
               var ndesc = document.getElementById("description").value;
               var cost = document.getElementById("accident").value;
               var goal = document.getElementById("proposal").value;
 
               if (name == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            } else if (email == "") {
               document.getElementById("demo").innerHTML = "";
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
