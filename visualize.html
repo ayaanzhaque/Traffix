@@ -271,10 +271,16 @@
               <h3>Stop Sign</h3>
               <form action="#">
             <div class="form-group">
-                    <textarea name="" id="stopLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
+                    <textarea name="" id="stopStreet" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
                   </div>
             <div class="form-group">
-                    <textarea name="" id="stopLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
+                    <textarea name="" id="stopCity" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <textarea name="" id="stopState" cols="30" rows="1" class="form-control" placeholder="State (abbreviation)"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <textarea name="" id="stopZIP" cols="30" rows="1" class="form-control" placeholder="ZIP Code"></textarea>
                   </div>
                 </form>
                 <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
@@ -283,28 +289,37 @@
              <div id="YieldSign" class="tabcontent">
                <h3>Yield Sign</h3>
                <form action="#">
-             <div class="form-group">
-                     <textarea name="" id="yieldLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                   </div>
-             <div class="form-group">
-                     <textarea name="" id="yieldLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                   </div>
+            <div class="form-group">
+              <textarea name="" id="yieldStreet" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+            </div>
+      <div class="form-group">
+              <textarea name="" id="yieldCity" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="yieldState" cols="30" rows="1" class="form-control" placeholder="State (abbreviation)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="yieldZIP" cols="30" rows="1" class="form-control" placeholder="ZIP Code"></textarea>
+            </div>
                  </form>
                  <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
               </div>
     
              <div id="SpeedLimit" class="tabcontent">
                <h3>Speed Limit</h3>
-               <form action="#">
-             <div class="form-group">
-                     <textarea name="" id="speedLat" cols="30" rows="1" class="form-control" placeholder="Latitude of Sign"></textarea>
-                   </div>
-             <div class="form-group">
-                     <textarea name="" id="speedLong" cols="30" rows="1" class="form-control" placeholder="Longitude of Sign"></textarea>
-                   </div>
-                   <div class="form-group">
-                           <textarea name="" id="speedRoad" cols="30" rows="1" class="form-control" placeholder="Road to Change Speed Limit"></textarea>
-                         </div>
+               <form action="#">     
+            <div class="form-group">
+              <textarea name="" id="speedStreet" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+            </div>
+      <div class="form-group">
+              <textarea name="" id="speedCity" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="speedState" cols="30" rows="1" class="form-control" placeholder="State (abbreviation)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="speedZIP" cols="30" rows="1" class="form-control" placeholder="ZIP Code"></textarea>
+            </div>
                    <div class="form-group">
                            <textarea name="" id="originalspeedSpeed" cols="30" rows="1" class="form-control" placeholder="Original Speed Limit"></textarea>
                          </div>
@@ -318,12 +333,18 @@
               <div id="StopLight" class="tabcontent">
                 <h3>Traffic Light</h3>
                 <form action="#">
-              <div class="form-group">
-                      <textarea name="" id="lightLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                    </div>
-              <div class="form-group">
-                      <textarea name="" id="lightLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                    </div>
+            <div class="form-group">
+              <textarea name="" id="lightStreet" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+            </div>
+      <div class="form-group">
+              <textarea name="" id="lightCity" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="lightState" cols="30" rows="1" class="form-control" placeholder="State (abbreviation)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="lightZIP" cols="30" rows="1" class="form-control" placeholder="ZIP Code"></textarea>
+            </div>
                   </form>
                   <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
                </div>
@@ -332,20 +353,34 @@
                  <h3>Lanes</h3>
                  <form action="#">
                    <label>Starting point</label>
-               <div class="form-group">
-                       <textarea name="" id="laneStartLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                     </div>
-               <div class="form-group">
-                       <textarea name="" id="latStartLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                     </div>
+               
+            <div class="form-group">
+              <textarea name="" id="laneStreetStart" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+            </div>
+      <div class="form-group">
+              <textarea name="" id="laneCityStart" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="laneStateStart" cols="30" rows="1" class="form-control" placeholder="State (abbreviation)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="laneZIPStart" cols="30" rows="1" class="form-control" placeholder="ZIP Code"></textarea>
+            </div>
     
                      <label>Ending point</label>
-                     <div class="form-group">
-                             <textarea name="" id="laneEndLat" cols="30" rows="1" class="form-control" placeholder="Latitude"></textarea>
-                           </div>
-                     <div class="form-group">
-                             <textarea name="" id="laneEndLong" cols="30" rows="1" class="form-control" placeholder="Longitude"></textarea>
-                           </div>
+                     
+            <div class="form-group">
+              <textarea name="" id="laneStreetEnd" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+            </div>
+      <div class="form-group">
+              <textarea name="" id="laneCityEnd" cols="30" rows="1" class="form-control" placeholder="City"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="laneStateEnd" cols="30" rows="1" class="form-control" placeholder="State (abbreviation)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="laneZIPEnd" cols="30" rows="1" class="form-control" placeholder="ZIP Code"></textarea>
+            </div>
                    </form>
                    <button class="btn btn-primary py-3 px-5" type="button" onClick="visualizeInit();">Submit</button>
                 </div>

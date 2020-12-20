@@ -69,7 +69,7 @@ function geocodeAddress(geocoder, address) {
 
       latArray.push(parseFloat(results[0].geometry.location.lat()));
       longArray.push(parseFloat(results[0].geometry.location.lng()));
-      alert(latArray);
+      //alert(latArray);
     } else {
       alert(
         "Geocode was not successful for the following reason: " + status
@@ -84,7 +84,7 @@ function geocodeLaneAddress(geocoder, address) {
 
       laneLat.push(parseFloat(results[0].geometry.location.lat()));
       laneLong.push(parseFloat(results[0].geometry.location.lng()));
-      alert(latArray);
+      //alert(laneLat);
     } else {
       alert(
         "Geocode was not successful for the following reason: " + status
@@ -94,40 +94,40 @@ function geocodeLaneAddress(geocoder, address) {
 }
 
 
-var stopStreet = document.getElementById("stopLat").value;
-var stopCity = document.getElementById("stopLat").value;
-var stopState = document.getElementById("stopLat").value;
-var stopZIP = document.getElementById("stopLat").value;
+var stopStreet = document.getElementById("stopStreet").value;
+var stopCity = document.getElementById("stopCity").value;
+var stopState = document.getElementById("stopState").value;
+var stopZIP = document.getElementById("stopZIP").value;
 var stopAddress = stopStreet + ", " + stopCity + ", " + stopState + " " + stopZIP; 
 
-var speedStreet = document.getElementById("stopLat").value;
-var speedCity = document.getElementById("stopLat").value;
-var speedState = document.getElementById("stopLat").value;
-var speedZIP = document.getElementById("stopLat").value;
+var speedStreet = document.getElementById("speedStreet").value;
+var speedCity = document.getElementById("speedCity").value;
+var speedState = document.getElementById("speedState").value;
+var speedZIP = document.getElementById("speedZIP").value;
 var speedAddress = speedStreet + ", " + speedCity + ", " + speedState + " " + speedZIP; 
 
-var lightStreet = document.getElementById("stopLat").value;
-var lightCity = document.getElementById("stopLat").value;
-var lightState = document.getElementById("stopLat").value;
-var lightZIP = document.getElementById("stopLat").value;
+var lightStreet = document.getElementById("lightStreet").value;
+var lightCity = document.getElementById("lightCity").value;
+var lightState = document.getElementById("lightState").value;
+var lightZIP = document.getElementById("lightZIP").value;
 var lightAddress = lightStreet + ", " + lightCity + ", " + lightState + " " + lightZIP; 
 
-var yieldStreet = document.getElementById("stopLat").value;
-var yieldCity = document.getElementById("stopLat").value;
-var yieldState = document.getElementById("stopLat").value;
-var yieldZIP = document.getElementById("stopLat").value;
+var yieldStreet = document.getElementById("yieldStreet").value;
+var yieldCity = document.getElementById("yieldCity").value;
+var yieldState = document.getElementById("yieldState").value;
+var yieldZIP = document.getElementById("yieldZIP").value;
 var yieldAddress = yieldStreet + ", " + yieldCity + ", " + yieldState + " " + yieldZIP; 
 
-var laneStreetStart = document.getElementById("stopLat").value;
-var laneCityStart = document.getElementById("stopLat").value;
-var laneStateStart = document.getElementById("stopLat").value;
-var laneZIPStart = document.getElementById("stopLat").value;
+var laneStreetStart = document.getElementById("laneStreetStart").value;
+var laneCityStart = document.getElementById("laneCityStart").value;
+var laneStateStart = document.getElementById("laneStateStart").value;
+var laneZIPStart = document.getElementById("laneZIPStart").value;
 var laneAddressStart = laneStreetStart + ", " + laneCityStart + ", " + laneStateStart + " " + laneZIPStart;
 
-var laneStreetEnd = document.getElementById("stopLat").value;
-var laneCityEnd = document.getElementById("stopLat").value;
-var laneStateEnd = document.getElementById("stopLat").value;
-var laneZIPEnd = document.getElementById("stopLat").value;
+var laneStreetEnd = document.getElementById("laneStreetEnd").value;
+var laneCityEnd = document.getElementById("laneCityEnd").value;
+var laneStateEnd = document.getElementById("laneStateEnd").value;
+var laneZIPEnd = document.getElementById("laneZIPEnd").value;
 var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + " " + laneZIPEnd;
 
 
@@ -176,11 +176,11 @@ var laneAddressEnd = laneStreetEnd + ", " + laneCityEnd + ", " + laneStateEnd + 
       presetMarker(presetLatArray[i], presetLongArray[i], map, presetIconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
-      for (i = 0; i < latArray.length; i++) {
+      for (i = 0; i < latArray.length + 1; i++) {
       placeMarker(latArray[i], longArray[i], map, iconLibrary[i], i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
       }
 
-      for (var i = 0; i < laneLat.length; i+=2 ) {
+      for (var i = 0; i < laneLat.length + 1; i+=2 ) {
 
         placeMarker(laneLat[i], laneLong[i], map, "", i, givenFlow[i], givenSpeed[i], givenDensity[i], givenWait[i], givenTravel[i]);
 
